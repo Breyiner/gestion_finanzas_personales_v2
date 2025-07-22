@@ -1,0 +1,74 @@
+<section class="auth">
+  <div class="logo">
+    <img src="./public/img/logo-proyecto-blanco.png" alt="Logo" class="logo__image">
+    <p class="logo__title">whealthy wellness</p>
+  </div>
+
+  <div class="auth__content">
+    <form autocomplete="off" action="#" novalidate class="form form--register"> 
+        <h4 class="form__title">Registro</h4>
+        
+        <div class="form__row">
+            <div class="form__field">
+            <label class="form__label" for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" class="form__input">
+            </div>
+            
+            <div class="form__field">
+            <label class="form__label" for="apellido">Apellido:</label>
+            <input required type="text" name="apellido" id="apellido" class="form__input">
+            </div>
+        </div>
+        
+        <div class="form__row">
+            <div class="form__field form__field--selector">
+            <label class="form__label" for="genero">Género:</label>
+            <select name="genero_id" id="genero" class="form__input selector" required>
+                <option class="selector__option">Seleccione...</option>
+                <option value="1" class="selector__option">Masculino</option>
+                <option value="2" class="selector__option">Femenino</option>
+                <option value="3" class="selector__option">Otro</option>
+            </select>
+            <i class="ri-arrow-down-s-line selector__icon"></i>
+            </div>
+
+            <div class="form__field form__field--selector">
+            <label class="form__label" for="ciudad">Ciudad:</label>
+            <select name="ciudad_id" id="ciudad" class="form__input selector" required>
+                <option class="selector__option">Seleccione...</option>
+                <option value="1" class="selector__option">Bucaramanga</option>
+                <option value="2" class="selector__option">Lebrija</option>
+                <option value="3" class="selector__option">Girón</option>
+                <option value="4" class="selector__option">Floridablanca</option>
+            </select>
+            <i class="ri-arrow-down-s-line selector__icon"></i>
+            </div>
+        </div>
+        
+        <div class="form__row">
+            <div class="form__field">
+            <label class="form__label" for="correo">Correo:</label>
+            <input required type="email" name="correo" id="correo" class="form__input">
+            </div>
+        </div>
+        
+        <div class="form__row">
+            <div class="form__field">
+            <label class="form__label" for="contrasena">Contraseña:</label>
+            <input required type="password" name="contrasena" id="contrasena" class="form__input">
+            </div>
+            <div class="form__field">
+            <label class="form__label" for="confirmar_contrasena">Confirmar contraseña:</label>
+            <input required type="password" name="confirmar_contrasena" id="confirmar_contrasena" class="form__input">
+            </div>
+        </div>
+        
+        <button type="submit" class="form__button form__button--register" id="registrar">Registrarse</button>
+        
+        <div class="form__footer">
+            <p class="form__text">¿Ya tienes cuenta?</p>
+            <a href="#/login" class="form__link">Iniciar Sesión</a>
+        </div>
+    </form>
+  </div>
+</section>
