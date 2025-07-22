@@ -1,8 +1,11 @@
+import { renderHeader } from "../components/header/header";
+import { renderSidebar } from "../components/sidebar/sidebar";
 import { routes } from "./routes"
 // import { isAuth } from "../helpers/auth";
 
-export const router = async (header, sidebar, app) => {
-    const layoutCargado = false;
+const layoutCargado = false;
+
+export const router = async (layout, header, sidebar, app) => {
     const hash = location.hash.slice(1);
 
     let arregloHash = hash.split("/");
@@ -17,6 +20,14 @@ export const router = async (header, sidebar, app) => {
     //     location.hash = "#/login";
     //     return;
     // }
+
+    if(ruta.layout && !layoutCargado) {
+        renderHeader(header);
+        renderSidebar(sidebar);
+        layoutCargado = true;
+    } else {
+        layout.classList.remove('layout');
+    }
 
 
 

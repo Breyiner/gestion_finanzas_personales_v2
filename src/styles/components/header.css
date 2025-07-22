@@ -1,0 +1,136 @@
+.header-content {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+/* === PROFILE === */
+.profile {
+  display: flex;
+  align-items: center;
+  color: #197364;
+  gap: 10px;
+  position: relative;
+}
+
+.profile__name {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.profile__avatar {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.profile__avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile__toggle {
+  display: none;
+}
+
+/* === MENU DESPLEGABLE === */
+.profile-menu {
+  position: absolute;
+  top: -500px;
+  right: 0;
+  width: 350px;
+  height: max-content;
+  transition: 0.5s;
+  border-radius: 15px;
+  z-index: 10;
+}
+
+.profile__toggle:checked + .profile-menu {
+  background-color: #197364;
+  top: 150%;
+  padding: 20px 20px 10px;
+}
+
+/* === INFO PERFIL === */
+.profile-menu__info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #fff;
+}
+
+.profile-menu__avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-menu__details {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-menu__username {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.profile-menu__link {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #0cdc89;
+  text-decoration: none;
+}
+
+/* === SEPARADOR === */
+.profile-menu__divider {
+  background-color: #fff;
+  border: none;
+  margin: 15px 0;
+  height: 2px;
+  width: 100%;
+}
+
+/* === LOGOUT === */
+.profile-menu__logout {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  margin: 12px 0;
+}
+
+.profile-menu__icon-container {
+  min-width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  background-color: #21a58f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.profile-menu__icon {
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.profile-menu__text {
+  flex-grow: 1;
+  font-size: 1.3rem;
+}
+
+.profile-menu__arrow {
+  font-size: 1.8rem;
+}

@@ -1,5 +1,6 @@
 import { loginController } from "../views/auth/login/loginController";
 import { registerController } from "../views/auth/register/registerController";
+import { homeController } from "../views/home/homeController";
 
 export const routes = {
    "": {
@@ -19,5 +20,11 @@ export const routes = {
         controller: registerController,
         private: false,
         layout: false
+   },
+   home:{
+        path: "home/index.html",
+        controller: homeController,
+        private: false,
+        layout: true
    }
 }

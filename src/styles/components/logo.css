@@ -1,5 +1,5 @@
-/* ================= LOGO ================= */
-.logo {
+/* ================= BRANDING ================= */
+.branding {
   grid-area: logo;
   display: flex;
   flex-direction: column;
@@ -8,15 +8,36 @@
   justify-content: center;
 }
 
-.logo__image {
+.branding__image {
   width: 35vw;
   height: auto;
 }
 
-.logo__title {
+.branding__title {
   text-transform: uppercase;
   font-size: 4.3rem;
   letter-spacing: -1px;
   font-weight: bold;
   color: #fff;
+}
+
+.branding--header {
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 0;
+  gap: 10px;
+}
+
+.branding__image--header {
+  width: 70px;
+  height: 70px;
+}
+
+.branding__title--header {
+  font-size: 1.2rem;
+  margin-top: 5px;
+  color: #197364;
+  display: block;
+  width: 0;
+  line-height: 25px;
 }
