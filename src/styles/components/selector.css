@@ -1,0 +1,22 @@
+/* ========== SELECTOR ========== */
+.form__field--selector {
+  position: relative;
+}
+
+.selector {
+  appearance: none;
+}
+
+.selector__icon {
+  position: absolute;
+  font-size: 1.8rem;
+  top: 45px;
+  right: 10px;
+  color: #000;
+  pointer-events: none;
+}
+
+.selector__option {
+  padding: 12px;
+  font-size: 1.2rem;
+}

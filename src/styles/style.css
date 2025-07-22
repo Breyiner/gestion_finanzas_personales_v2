@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Holtwood+One+SC&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Passion+One:wght@400;700;900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Ultra&display=swap');
+@import url(./components/logo.css);
+@import url(./components/form.css);
+@import url(./components/selector.css);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+
+/* ================= AUTH ================= */
+.auth {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100vh;
+  grid-template-areas: "logo formulario";
+  position: relative;
+  background-color: #197364;
+}
+
+.auth__content {
+  grid-area: formulario;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

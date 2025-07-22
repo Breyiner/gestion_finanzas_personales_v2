@@ -1,0 +1,22 @@
+/* ================= LOGO ================= */
+.logo {
+  grid-area: logo;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.logo__image {
+  width: 35vw;
+  height: auto;
+}
+
+.logo__title {
+  text-transform: uppercase;
+  font-size: 4.3rem;
+  letter-spacing: -1px;
+  font-weight: bold;
+  color: #fff;
+}

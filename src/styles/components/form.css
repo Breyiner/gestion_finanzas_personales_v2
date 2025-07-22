@@ -1,0 +1,98 @@
+/* ================= FORM ================= */
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 30px;
+  gap: 40px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form--register {
+  width: 40vw;
+}
+
+.form__title {
+  color: #197364;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.form--register .form__title {
+  margin-bottom: -20px;
+}
+
+.form__row {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.form__label {
+  color: #197364;
+  font-weight: 500;
+  text-align: left;
+}
+
+.form__input {
+  background-color: #c2c2c251;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  padding: 12px;
+  outline: none;
+  width: 100%;
+}
+
+.form__input:focus {
+  border: 2px solid #197364;
+  transition: 0.2s linear;
+}
+
+/* ========== FORM BUTTON ========== */
+.form__button {
+  border: none;
+  background-color: #197364;
+  width: 300px;
+  padding: 10px 0;
+  margin-top: 10px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  color: #fff;
+  text-align: center;
+  align-self: center;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.form__button:hover {
+  background-color: #21a58f;
+}
+
+.form--register .form__button {
+  width: 250px;
+}
+
+/* ========== REDIRECT FOOTER ========== */
+.form__footer {
+  display: flex;
+  gap: 10px;
+  font-size: 1.3rem;
+  justify-content: center;
+  color: #197364;
+}
+
+.form__link {
+  color: #21a58f;
+}
