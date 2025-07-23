@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <h2 class="modal-header__title">Registrar Movimiento</h2>
+  <div class="modal-exit">
+    <i class="ri-close-fill modal-exit__icon"></i>
+  </div>
+</div>
+
+<div class="modal-body">
+  <form class="form form--modal">
+    <div class="form__row">
+      <div class="form__field">
+        <label class="form__label">Nombre:</label>
+        <input type="text" class="form__input">
+      </div>
+      <div class="form__field">
+        <label class="form__label">Monto:</label>
+        <input type="text" class="form__input">
+      </div>
+    </div>
+    
+    <div class="form__row">
+      <div class="form__field form__field--selector">
+        <label class="form__label">Tipo de movimiento:</label>
+        <select class="form__input">
+          <option>Seleccione...</option>
+          <option>Ingreso</option>
+          <option>Gasto</option>
+        </select>
+      </div>
+      <div class="form__field form__field--selector">
+        <label class="form__label">Categoría:</label>
+        <select class="form__input">
+          <option>Seleccione...</option>
+          <option>Comida</option>
+          <option>Transporte</option>
+          <option>Moda</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form__row">
+      <div class="form__field">
+        <label class="form__label">Descripción:</label>
+        <textarea rows="4" class="form__input form__input--textarea"></textarea>
+      </div>
+    </div>
+
+    <div class="form__buttons">
+      <button class="boton boton--verde">Registrar</button>
+    </div>
+  </form>
+</div>

@@ -98,7 +98,8 @@
 }
 
 
-/* Vista perfil */
+/* ========== VISTA PERFIL ========== */
+
 .form--profile {
   width: 100%;
   background-color: transparent;
@@ -114,4 +115,23 @@
 .form__button--profile{
   align-self: flex-start;
   padding: 10px 30px;
+}
+
+/* ========== MODALES ========== */
+.form--modal {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  gap: 25px;
+}
+
+.form--modal .form__label {
+  font-size: 1.2rem;
+}
+
+.form__input--textarea {
+  resize: none;
+  min-height: 100px;
 }
