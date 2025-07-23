@@ -1,0 +1,25 @@
+.boton {
+  border: none;
+  height: 40px;
+  min-width: 100px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 3px 12px;
+  cursor: pointer;
+  color: #fff;
+  vertical-align: middle;
+  font-family: "Montserrat", sans-serif;
+}
+
+.boton--rojo {
+  background-color: rgb(255, 69, 69);
+}
+
+.boton--azul {
+  background-color: #007bff;
+}
+
+.boton--verde {
+  background-color: #41bf5e;
+}
