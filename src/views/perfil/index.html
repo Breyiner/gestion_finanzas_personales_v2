@@ -1,0 +1,97 @@
+<section class="container">
+
+    <div class="section-header">
+        <h1 class="section-header__title">Perfil</h1>
+        <p class="section-header__description">Apartado para gestionar tu perfil.</p>
+    </div>
+
+    <div class="info-user">
+        <div class="info-user-card">
+            <div class="info-user-card__header">
+                <h2 class="info-user-card__title">Actualiza Datos Personales</h2>
+                <p class="info-user-card__text">En este espacio podrás actualizar tu información de usuario</p>
+            </div>
+            
+            <form autocomplete="off" action="#" novalidate class="form form--profile">
+                <div class="form__row">
+                    <div class="form__field">
+                        <label class="form__label" for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" id="nombre" class="form__input">
+                    </div>
+                    
+                    <div class="form__field">
+                        <label class="form__label" for="apellido">Apellido:</label>
+                        <input type="text" name="apellido" id="apellido" class="form__input">
+                    </div>
+                </div>
+
+                <div class="form__row">
+                    <div class="form__field form__field--selector">
+                        <label class="form__label" for="genero">Género:</label>
+                        <select name="genero_id" id="genero" class="form__input selector" required>
+                            <option class="selector__option">Seleccione...</option>
+                            <option value="1" class="selector__option">Masculino</option>
+                            <option value="2" class="selector__option">Femenino</option>
+                            <option value="3" class="selector__option">Otro</option>
+                        </select>
+                        <i class="ri-arrow-down-s-line selector__icon"></i>
+                    </div>
+
+                    <div class="form__field form__field--selector">
+                        <label class="form__label" for="ciudad">Ciudad:</label>
+                        <select name="ciudad_id" id="ciudad" class="form__input selector" required>
+                            <option class="selector__option">Seleccione...</option>
+                            <option value="1" class="selector__option">Bucaramanga</option>
+                            <option value="2" class="selector__option">Lebrija</option>
+                            <option value="3" class="selector__option">Girón</option>
+                            <option value="4" class="selector__option">Floridablanca</option>
+                        </select>
+                        <i class="ri-arrow-down-s-line selector__icon"></i>
+                    </div>
+                </div>
+
+                <div class="form__row">
+                    <div class="form__field">
+                        <label class="form__label" for="correo">Correo:</label>
+                        <input type="email" name="correo" id="correo" class="form__input">
+                    </div>
+
+                    <div class="form__field">
+                        <label class="form__label" for="correo_confirm">Confirmar correo:</label>
+                        <input type="email" name="correo_confirm" id="correo_confirm" class="form__input">
+                    </div>
+                </div>
+
+                <button type="submit" class="form__button form__button--profile">Actualizar datos</button>
+            </form>
+        </div>
+
+        <div class="info-user-card">
+            <div class="info-user-card__header">
+                <h2 class="info-user-card__title">Actualiza Información Sensible</h2>
+                <p class="info-user-card__text">En este espacio podrás actualizar tu contraseña</p>
+            </div>
+
+            <form autocomplete="off" action="#" novalidate class="form form--profile">
+                <div class="form__row">
+                    <div class="form__field">
+                        <label class="form__label" for="old_pass">Actual contraseña:</label>
+                        <input type="password" name="old_pass" id="old_pass" class="form__input">
+                    </div>
+
+                    <div class="form__field">
+                        <label class="form__label" for="new_pass">Nueva contraseña:</label>
+                        <input type="password" name="new_pass" id="new_pass" class="form__input">
+                    </div>
+
+                    <div class="form__field">
+                        <label class="form__label" for="confirm_pass">Confirmar nueva contraseña:</label>
+                        <input type="password" name="confirm_pass" id="confirm_pass" class="form__input">
+                    </div>
+                </div>
+
+                <button type="submit" class="form__button form__button--profile">Actualizar contraseña</button>
+            </form>
+        </div>
+    </div>
+</section>

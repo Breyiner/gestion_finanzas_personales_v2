@@ -96,3 +96,22 @@
 .form__link {
   color: #21a58f;
 }
+
+
+/* Vista perfil */
+.form--profile {
+  width: 100%;
+  background-color: transparent;
+  padding: 0;
+  box-shadow: none;
+  gap: 30px;
+}
+
+.form--profile .form__label {
+  font-size: 1.2rem;
+}
+
+.form__button--profile{
+  align-self: flex-start;
+  padding: 10px 30px;
+}
