@@ -1,0 +1,50 @@
+.movimiento-resumen {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-radius: 12px;
+  color: white;
+  gap: 16px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.movimiento-resumen__icono {
+  font-size: 2.8rem;
+}
+
+.movimiento-resumen__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.movimiento-resumen__titulo {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.movimiento-resumen__monto {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Colores personalizados por tipo */
+.movimiento-resumen--ingresos {
+  background: linear-gradient(to right, #0f9d58, #34a853);
+}
+
+.movimiento-resumen--gastos {
+  background: linear-gradient(to right, #db4437, #c23321);
+}
+
+.movimiento-resumen--metas {
+  background: linear-gradient(to right, #f4b400, #fbc02d);
+}
+
+.movimiento-resumen--balance {
+  background: linear-gradient(to right, #4285f4, #3367d6);
+}

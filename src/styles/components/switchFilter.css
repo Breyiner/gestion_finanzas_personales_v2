@@ -1,0 +1,40 @@
+.switch-filtro {
+  position: relative;
+  display: inline-flex;
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px;
+  align-self: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.switch-filtro__radio {
+  display: none;
+}
+
+.switch-filtro__name {
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #6c757d;
+  transition: all 0.2s ease;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.switch-filtro__radio--ingresos:checked + .switch-filtro__name--ingresos {
+  background: #28a745;
+  color: white;
+}
+
+.switch-filtro__radio--gastos:checked + .switch-filtro__name--gastos {
+  background: #dc3545;
+  color: white;
+}
+
+.switch-filtro__radio--metas:checked + .switch-filtro__name--metas {
+  background: #ffc107;
+  color: white;
+}
