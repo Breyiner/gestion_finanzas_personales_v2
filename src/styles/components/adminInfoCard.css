@@ -1,0 +1,89 @@
+.admin-info-card {
+    background: linear-gradient(135deg, #068960, #047857c8);
+    background: linear-gradient(135deg, #10b981, #059669);
+    background: linear-gradient(135deg, #10b98150, #05966891);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    color: white;
+    color: #0f766e;
+    box-shadow: 0 8px 25px -8px rgba(5, 150, 105, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover effect */
+.admin-info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px -8px rgba(5, 150, 105, 0.5);
+}
+
+
+.admin-info-card__content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Contenedor del ícono */
+.admin-info-card__box-icon {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+/* Ícono */
+.admin-info-card__icon {
+    font-size: 2.5rem;
+    color: white;
+}
+
+/* Título */
+.admin-info-card__titulo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+/* Valor principal */
+.admin-info-card__valor {
+    font-size: 2.7rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+/* Descripción */
+.admin-info-card__desc {
+    font-size: 1.2rem;
+    /* opacity: 0.8; */
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+/* Contenedor del ícono - Fondo más oscuro para contrastar */
+.admin-info-card__box-icon {
+    background: #197364;
+    border-radius: 14px;
+    padding: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(25, 115, 100, 0.3);
+}
+
+/* Ícono - Blanco para contrastar con el fondo oscuro */
+.admin-info-card__icon {
+    font-size: 2rem;
+    color: white;
+}
