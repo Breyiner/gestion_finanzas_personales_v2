@@ -25,8 +25,9 @@ export const cerrarModal = async () => {
     setTimeout(() => {
         modalCerrar.close();
         app.removeChild(modalCerrar);
-    }, 400);
 
-    let ultimo = modalesAbiertos[modalesAbiertos.length - 1];
-    if(ultimo) ultimo.classList.remove('invisible');
+        let ultimo = modalesAbiertos[modalesAbiertos.length - 1];
+        
+        if(ultimo) ultimo.classList.remove('invisible');
+    }, 400);
 }

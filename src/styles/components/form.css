@@ -135,3 +135,8 @@
   resize: none;
   min-height: 100px;
 }
+
+.form__buttons {
+  display: flex;
+  gap: 20px;
+}

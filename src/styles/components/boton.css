@@ -23,3 +23,14 @@
 .boton--verde {
   background-color: #41bf5e;
 }
+
+.boton--colorPrincipal {
+  background-color: #197364;
+  height: 45px;
+}
+
+.boton--space-bet {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -14,5 +14,5 @@ document.addEventListener('click', async (e) => {
     if (e.target.closest('.tile--movimiento')) mostrarModal(modalDetalles);
 
 
-    if (e.target.closest('.modal-exit')) await cerrarModal();
+    if (e.target.closest('.modal-exit--inicio')) await cerrarModal();
 });
