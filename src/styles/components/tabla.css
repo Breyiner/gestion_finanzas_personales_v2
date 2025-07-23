@@ -1,0 +1,27 @@
+.tabla {
+  background-color: #fff;
+  height: max-content;
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  /* flex-direction: column; */
+}
+
+.tabla__header {
+  background-color: #197364;
+  color: #eeeeee;
+  margin-bottom: 20px;
+}
+
+.tabla__celda {
+  padding: 15px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.tabla__celda--header {
+  padding: 20px;
+  font-size: 1.2rem;
+}
