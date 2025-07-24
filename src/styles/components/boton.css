@@ -34,3 +34,18 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.boton--grande {
+  height: 100px;
+  padding: 30px 0;
+  font-size: 1.5rem;
+} 
+
+.boton-txt-mainColor {
+  color: #197364;
+}
+
+.boton--borde-mainColor {
+  border: 2px dashed #197364;
+  border-radius: 10px;
+}

@@ -14,7 +14,7 @@
 
 .tile:hover {
   transform: translateY(-4px);
-  border-color: #19736467;
+  border-color: #197364;
 }
 
 .tile__info {

@@ -1,0 +1,77 @@
+<div class="modal-header">
+  <h2 class="modal-header__title">Editar Usuario</h2>
+  <div class="modal-exit modal-exit--usuario">
+    <i class="ri-close-fill modal-exit__icon"></i>
+  </div>
+</div>
+
+<div class="modal-body">
+  <form class="form form--modal">
+    <div class="form__row">
+      <div class="form__field">
+        <label class="form__label">Nombre:</label>
+        <input type="text" class="form__input">
+      </div>
+      <div class="form__field">
+        <label class="form__label">Apellido:</label>
+        <input type="text" class="form__input">
+      </div>
+    </div>
+    
+    <div class="form__row">
+      <div class="form__field form__field--selector">
+        <label class="form__label">Género:</label>
+        <select class="form__input">
+          <option>Seleccione...</option>
+          <option>Masculino</option>
+          <option>Femenino</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="form__field form__field--selector">
+        <label class="form__label">Ciudad:</label>
+        <select class="form__input selector" required>
+            <option class="selector__option">Seleccione...</option>
+            <option value="1" class="selector__option">Bucaramanga</option>
+            <option value="2" class="selector__option">Lebrija</option>
+            <option value="3" class="selector__option">Girón</option>
+            <option value="4" class="selector__option">Floridablanca</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form__row">
+      <div class="form__field form__field--selector">
+        <label class="form__label">Rol:</label>
+        <select class="form__input">
+          <option>Seleccione...</option>
+          <option>Administrador</option>
+          <option>Usuario</option>
+        </select>
+      </div>
+      <div class="form__field form__field--selector">
+        <label class="form__label">Estado:</label>
+        <select class="form__input selector" required>
+            <option class="selector__option">Seleccione...</option>
+            <option value="1" class="selector__option">Activo</option>
+            <option value="2" class="selector__option">Inactivo</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form__row">
+      <div class="form__field">
+        <label class="form__label">Correo:</label>
+        <input type="text" class="form__input">
+      </div>
+      <div class="form__field">
+        <label class="form__label">Contraseña:</label>
+        <input type="password" class="form__input">
+      </div>
+    </div>
+
+    <div class="form__buttons">
+      <button class="boton boton--azul">Guardar</button>
+    </div>
+  </form>
+</div>
