@@ -8,6 +8,7 @@
   gap: 16px;
   width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #3367d6;
 }
 
 .movimiento-resumen__icono {
@@ -34,17 +35,13 @@
 
 /* Colores personalizados por tipo */
 .movimiento-resumen--ingresos {
-  background: linear-gradient(to right, #0f9d58, #34a853);
+  background: #28a745;
 }
 
 .movimiento-resumen--gastos {
-  background: linear-gradient(to right, #db4437, #c23321);
+  background: #dc3545;
 }
 
 .movimiento-resumen--metas {
-  background: linear-gradient(to right, #f4b400, #fbc02d);
-}
-
-.movimiento-resumen--balance {
-  background: linear-gradient(to right, #4285f4, #3367d6);
+  background: #ffc107;
 }
