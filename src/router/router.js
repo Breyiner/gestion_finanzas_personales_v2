@@ -1,9 +1,12 @@
 import { renderHeader } from "../components/header/header";
+import { renderHeaderAdmin } from "../components/headerAdmin/headerAdmin";
 import { renderSidebar } from "../components/sidebar/sidebar";
+import { renderSidebarAdmin } from "../components/sidebarAdmin/sidebarAdmin";
+import { addClass, deleteClass } from "../helpers/modifyClass";
 import { routes } from "./routes"
 // import { isAuth } from "../helpers/auth";
 
-const layoutCargado = false;
+let layoutCargado = false;
 
 export const router = async (layout, header, sidebar, app) => {
     const hash = location.hash.slice(1);
@@ -12,7 +15,14 @@ export const router = async (layout, header, sidebar, app) => {
     const [ruta, parametros] = recorrerRutas(routes, arregloHash);
 
     if(!ruta) {
-        elemento.innerHTML = `<h2>Ruta no encontrada</h2>`;
+        header.innerHTML = "";
+        sidebar.innerHTML = "";
+        deleteClass(layout, 'layout');
+        deleteClass(header, 'header');
+        deleteClass(sidebar, 'sidebar');
+        deleteClass(app, 'app');
+        layoutCargado = false;
+        app.innerHTML = `<h2>Ruta no encontrada</h2>`;
         return;
     }
 
@@ -22,16 +32,31 @@ export const router = async (layout, header, sidebar, app) => {
     // }
 
     if(ruta.layout && !layoutCargado) {
+        addClass(layout, 'layout');
+        addClass(header, 'header');
+        addClass(sidebar, 'sidebar');
+        addClass(app, 'app');
         renderHeader(header);
         renderSidebar(sidebar);
         layoutCargado = true;
-    } else {
-        layout.classList.remove('layout');
+    } 
+    else if (!ruta.layout){
+        header.innerHTML = "";
+        sidebar.innerHTML = "";
+        deleteClass(layout, 'layout');
+        deleteClass(header, 'header');
+        deleteClass(sidebar, 'sidebar');
+        deleteClass(app, 'app');
+        layoutCargado = false;
     }
 
+    if(ruta.admin) {
+        renderSidebarAdmin(sidebar);
+        renderHeaderAdmin(header);
+        layoutCargado = false;
+    }
 
-
-    await cargarVista(ruta.path, app)  
+    await cargarVista(ruta.path, app);
     await ruta.controller(parametros);
 }
 
