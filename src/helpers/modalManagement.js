@@ -19,7 +19,7 @@ export const mostrarModal = (contenido) => {
     requestAnimationFrame(() => modalCreado.classList.add('animationStart'));
 };
 
-export const cerrarModal = async () => {
+export const cerrarModal = () => {
     let modalCerrar = modalesAbiertos.pop();
     modalCerrar.classList.add('animationEnd');
     setTimeout(() => {
