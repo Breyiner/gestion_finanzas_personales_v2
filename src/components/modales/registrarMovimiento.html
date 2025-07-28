@@ -6,34 +6,27 @@
 </div>
 
 <div class="modal-body">
-  <form class="form form--modal">
+  <form class="form form--modal" id="form-nuevoMovimiento" novalidate autocomplete="off">
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Nombre:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" id="nombreMovimiento" name="nombre" required>
       </div>
       <div class="form__field">
         <label class="form__label">Monto:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" id="montoMovimiento" name="monto" required>
       </div>
     </div>
     
     <div class="form__row">
       <div class="form__field form__field--selector">
         <label class="form__label">Tipo de movimiento:</label>
-        <select class="form__input">
-          <option>Seleccione...</option>
-          <option>Ingreso</option>
-          <option>Gasto</option>
+        <select class="form__input" id="tiposMovimiento" name="tipo_movimiento_id" required>
         </select>
       </div>
       <div class="form__field form__field--selector">
         <label class="form__label">Categoría:</label>
-        <select class="form__input">
-          <option>Seleccione...</option>
-          <option>Comida</option>
-          <option>Transporte</option>
-          <option>Moda</option>
+        <select class="form__input" id="categoriasMovimiento" name="categoria_id" required>
         </select>
       </div>
     </div>
@@ -41,12 +34,12 @@
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Descripción:</label>
-        <textarea rows="4" class="form__input form__input--textarea"></textarea>
+        <textarea rows="4" class="form__input form__input--textarea" id="descripcionMovimiento" name="descripcion" required></textarea>
       </div>
     </div>
 
     <div class="form__buttons">
-      <button class="boton boton--verde">Registrar</button>
+      <button class="boton boton--verde" id="btnCrearMovimiento">Registrar</button>
     </div>
   </form>
 </div>

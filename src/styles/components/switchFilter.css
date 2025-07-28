@@ -24,6 +24,11 @@
   white-space: nowrap;
 }
 
+.switch-filtro__name.checkeado {
+  background-color: var(--colorTipo);
+  color: #fff;
+}
+
 .switch-filtro__radio--ingresos:checked + .switch-filtro__name--ingresos {
   background: #28a745;
   color: white;

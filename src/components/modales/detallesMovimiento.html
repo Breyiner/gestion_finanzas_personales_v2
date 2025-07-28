@@ -1,39 +1,38 @@
 <div class="modal-header">
   <h2 class="modal-header__title">Movimiento</h2>
-  <div class="modal-exit modal-exit--calendario">
+  <div class="modal-exit modal-exit--inicio">
     <i class="ri-close-fill modal-exit__icon"></i>
   </div>
 </div>
 
 <div class="modal-body">
-  <form class="form form--modal">
+  <form class="form form--modal" id="form-detallesMovimiento" autocomplete="off">
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Nombre:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" name="nombre" id="nombreMovimiento" required>
       </div>
+    </div>
+    <div class="form__row">
       <div class="form__field">
         <label class="form__label">Monto:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" name="monto" id="montoMovimiento" required>
+      </div>
+      <div class="form__field">
+        <label class="form__label">Fecha Creación:</label>
+        <input type="date" class="form__input" name="fecha_creacion" required readonly>
       </div>
     </div>
     
     <div class="form__row">
       <div class="form__field form__field--selector">
         <label class="form__label">Tipo de movimiento:</label>
-        <select class="form__input">
-          <option>Seleccione...</option>
-          <option>Ingreso</option>
-          <option>Gasto</option>
+        <select class="form__input" id="tiposMovimiento" name="tipo_movimiento_id" id="tiposMovimiento" required>
         </select>
       </div>
       <div class="form__field form__field--selector">
         <label class="form__label">Categoría:</label>
-        <select class="form__input">
-          <option>Seleccione...</option>
-          <option>Comida</option>
-          <option>Transporte</option>
-          <option>Moda</option>
+        <select class="form__input" id="categoriasMovimiento" name="categoria_id" id="categoriasMovimiento" required>
         </select>
       </div>
     </div>
@@ -41,13 +40,13 @@
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Descripción:</label>
-        <textarea rows="4" class="form__input form__input--textarea"></textarea>
+        <textarea rows="4" class="form__input form__input--textarea" name="descripcion" id="descripcionMovimiento" required></textarea>
       </div>
     </div>
 
     <div class="form__buttons">
-      <button class="boton boton--azul">Editar</button>
-      <button class="boton boton--rojo">Eliminar</button>
+      <button class="boton boton--azul" id="editarMovimiento" type="button">Editar</button>
+      <button class="boton boton--rojo" id="eliminarMovimiento" type="button">Eliminar</button>
     </div>
   </form>
 </div>
