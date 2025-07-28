@@ -11,6 +11,7 @@
   opacity: 0;
   transform: translateY(-20px);
   transition: all 0.3s ease-in-out;
+  z-index: 1 !important;
 }
 
 .modal.animationStart {
@@ -29,6 +30,7 @@
 
 .modal::backdrop {
   background-color: #8282828c;
+  z-index: 0;
 }
 
 .modal-header {
@@ -72,4 +74,23 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+
+.confirm {
+  margin: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+.confirm__title {
+  color: #197364  ;
+}
+
+.confirm__botones {
+  display: flex;
+  gap: 50px;
 }

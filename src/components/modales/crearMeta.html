@@ -6,18 +6,18 @@
 </div>
 
 <div class="modal-body">
-  <form class="form form--modal">
+  <form class="form form--modal" id="form-nuevaMeta">
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Nombre:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" name="nombre" required id="nombreMeta">
       </div>
     </div>
     
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Total a ahorrar:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" name="monto" required id="montoMeta">
       </div>
       <div class="form__field">
         <label class="form__label">Fecha Límite(opcional):</label>
@@ -28,12 +28,12 @@
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Descripción:</label>
-        <textarea rows="4" class="form__input form__input--textarea"></textarea>
+        <textarea rows="4" class="form__input form__input--textarea" name="descripcion" required id="descripcionMeta"></textarea>
       </div>
     </div>
 
     <div class="form__buttons">
-      <button class="boton boton--verde">Crear</button>
+      <button class="boton boton--verde" id="btnCrearMeta">Crear</button>
     </div>
   </form>
 </div>

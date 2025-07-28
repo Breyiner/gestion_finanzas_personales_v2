@@ -6,54 +6,54 @@
 </div>
 
 <div class="modal-body">
-  <form class="form form--modal">
+  <form class="form form--modal" id="form-detallesMeta">
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Nombre:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" name="nombre" required id="nombreMeta">
       </div>
       <div class="form__field">
         <label class="form__label">Estado:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" name="estado" readonly>
       </div>
     </div>
     
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Fecha Creación:</label>
-        <input type="date" class="form__input">
+        <input type="date" class="form__input" name="fecha_creacion" readonly>
       </div>
       <div class="form__field">
-        <label class="form__label">Fecha Límite:</label>
-        <input type="date" class="form__input">
+        <label class="form__label">Fecha Límite (opcional):</label>
+        <input type="date" class="form__input" name="fecha_limite">
       </div>
     </div>
 
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Total a ahorrar:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" name="monto" required id="montoMeta">
       </div>
       <div class="form__field">
         <label class="form__label">Total ahorrado:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" name="total" readonly>
       </div>
     </div>
 
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Descripción:</label>
-        <textarea rows="4" class="form__input form__input--textarea"></textarea>
+        <textarea rows="4" class="form__input form__input--textarea" name="descripcion" required id="descripcionMeta"></textarea>
       </div>
     </div>
 
     <div class="form__buttons">
-      <button class="boton boton--azul">Editar</button>
-      <button class="boton boton--rojo">Eliminar</button>
+      <button class="boton boton--azul" type="button" id="editarMeta">Editar</button>
+      <button class="boton boton--rojo" type="button" id="eliminarMeta">Eliminar</button>
     </div>
   </form>
-  <button type="button" class="allAportes boton boton--colorPrincipal boton--space-bet">
+  <button type="button" class="boton boton--colorPrincipal boton--space-bet" id="verAportes">
     Aportes
-    <span class="cant-aportes">10</span>
-    </button>
+    <span class="cant-aportes"></span>
+  </button>
 </div>
