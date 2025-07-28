@@ -1,5 +1,5 @@
 const app = document.querySelector('#app');
-const modalesAbiertos = [];
+let modalesAbiertos = [];
 
 export const mostrarModal = (contenido) => {
 
@@ -29,5 +29,19 @@ export const cerrarModal = () => {
         let ultimo = modalesAbiertos[modalesAbiertos.length - 1];
         
         if(ultimo) ultimo.classList.remove('invisible');
+    }, 400);
+}
+
+export const cerrarTodos = () => {
+    let modalCerrar = modalesAbiertos.pop();
+    modalCerrar.classList.add('animationEnd');
+
+    setTimeout(() => {
+        modalCerrar.close();
+        app.removeChild(modalCerrar);
+        
+        modalesAbiertos.forEach(modal => app.removeChild(modal));
+        modalesAbiertos = [];
+
     }, 400);
 }
