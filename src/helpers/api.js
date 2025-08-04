@@ -22,6 +22,9 @@ export const post = async (datos, endpoint) => {
         body: JSON.stringify(datos)
     });
 
+    console.log(data);
+    
+
     return await data.json();
 }
 
