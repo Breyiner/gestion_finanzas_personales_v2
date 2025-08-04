@@ -6,36 +6,27 @@
 </div>
 
 <div class="modal-body">
-  <form class="form form--modal">
+  <form class="form form--modal form-newUser" novalidate  autocomplete="off">
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Nombre:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" id="nombre" name="nombre" required>
       </div>
       <div class="form__field">
         <label class="form__label">Apellido:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" id="apellido" name="apellido" required>
       </div>
     </div>
     
     <div class="form__row">
       <div class="form__field form__field--selector">
         <label class="form__label">Género:</label>
-        <select class="form__input">
-          <option>Seleccione...</option>
-          <option>Masculino</option>
-          <option>Femenino</option>
-          <option>Otro</option>
+        <select class="form__input" id="genero" name="genero_id" required>
         </select>
       </div>
       <div class="form__field form__field--selector">
         <label class="form__label">Ciudad:</label>
-        <select class="form__input selector" required>
-            <option class="selector__option">Seleccione...</option>
-            <option value="1" class="selector__option">Bucaramanga</option>
-            <option value="2" class="selector__option">Lebrija</option>
-            <option value="3" class="selector__option">Girón</option>
-            <option value="4" class="selector__option">Floridablanca</option>
+        <select class="form__input selector" required id="ciudad" name="ciudad_id">
         </select>
       </div>
     </div>
@@ -43,27 +34,15 @@
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Correo:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" id="correo" name="correo" required>
       </div>
-      <div class="form__field">
-        <label class="form__label">Confirmar Correo:</label>
-        <input type="text" class="form__input">
-      </div>
-    </div>
-
-    <div class="form__row">
       <div class="form__field">
         <label class="form__label">Contraseña:</label>
-        <input type="password" class="form__input">
-      </div>
-      <div class="form__field">
-        <label class="form__label">Confirmar Contraseña:</label>
-        <input type="password" class="form__input">
+        <input type="password" class="form__input" id="contrasena" name="contrasena" required>
       </div>
     </div>
-
     <div class="form__buttons">
-      <button class="boton boton--verde">Crear</button>
+      <button class="boton boton--verde" id="newUser">Crear</button>
     </div>
   </form>
 </div>

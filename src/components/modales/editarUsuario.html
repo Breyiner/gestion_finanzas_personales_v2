@@ -6,36 +6,27 @@
 </div>
 
 <div class="modal-body">
-  <form class="form form--modal">
+  <form class="form form--modal" id="form-editUser" autocomplete="off" novalidate>
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Nombre:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" name="nombre" required id="nombre">
       </div>
       <div class="form__field">
         <label class="form__label">Apellido:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" name="apellido" required id="apellido">
       </div>
     </div>
     
     <div class="form__row">
       <div class="form__field form__field--selector">
         <label class="form__label">Género:</label>
-        <select class="form__input">
-          <option>Seleccione...</option>
-          <option>Masculino</option>
-          <option>Femenino</option>
-          <option>Otro</option>
+        <select class="form__input" name="genero_id" required id="genero">
         </select>
       </div>
       <div class="form__field form__field--selector">
         <label class="form__label">Ciudad:</label>
-        <select class="form__input selector" required>
-            <option class="selector__option">Seleccione...</option>
-            <option value="1" class="selector__option">Bucaramanga</option>
-            <option value="2" class="selector__option">Lebrija</option>
-            <option value="3" class="selector__option">Girón</option>
-            <option value="4" class="selector__option">Floridablanca</option>
+        <select class="form__input selector" required name="ciudad_id" id="ciudad">
         </select>
       </div>
     </div>
@@ -43,18 +34,12 @@
     <div class="form__row">
       <div class="form__field form__field--selector">
         <label class="form__label">Rol:</label>
-        <select class="form__input">
-          <option>Seleccione...</option>
-          <option>Administrador</option>
-          <option>Usuario</option>
+        <select class="form__input" name="rol_id" required id="rol">
         </select>
       </div>
       <div class="form__field form__field--selector">
         <label class="form__label">Estado:</label>
-        <select class="form__input selector" required>
-            <option class="selector__option">Seleccione...</option>
-            <option value="1" class="selector__option">Activo</option>
-            <option value="2" class="selector__option">Inactivo</option>
+        <select class="form__input selector" required name="estado_id" id="estado">
         </select>
       </div>
     </div>
@@ -62,16 +47,16 @@
     <div class="form__row">
       <div class="form__field">
         <label class="form__label">Correo:</label>
-        <input type="text" class="form__input">
+        <input type="text" class="form__input" name="correo" id="correo" required>
       </div>
       <div class="form__field">
         <label class="form__label">Contraseña:</label>
-        <input type="password" class="form__input">
+        <input type="password" class="form__input" name="contrasena" id="contrasena">
       </div>
     </div>
 
     <div class="form__buttons">
-      <button class="boton boton--azul">Guardar</button>
+      <button class="boton boton--azul" id="guardarEdicion">Guardar</button>
     </div>
   </form>
 </div>
