@@ -4,10 +4,14 @@ import { cerrarModal, mostrarModal } from '../../helpers/modalManagement';
 import htmlContent from  './verMovimientos.html?raw';
 import { formatter } from '../../helpers/formateadorPrecio.js';
 
-const mesActual = new Date().getMonth() + 1;
-const usuario_id = parseInt(localStorage.getItem('usuario_id'));
+let mesActual = null;
+let usuario_id = null;
 
 export const abrirModalMovimientos = async (idCategoria, idTipoMovimiento) => {
+
+  usuario_id = parseInt(localStorage.getItem('usuario_id'));
+  mesActual = new Date().getMonth() + 1;
+
     // Crear y mostrar el modal
     mostrarModal(htmlContent);
     

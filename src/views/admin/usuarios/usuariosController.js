@@ -5,9 +5,11 @@ import { error, success } from '../../../helpers/alertas';
 import { delet, get } from '../../../helpers/api';
 import { cerrarModal, mostrarModal } from '../../../helpers/modalManagement';
 
-const user_id = localStorage.getItem('usuario_id');
+let user_id = null;
 
 export const usuariosController = async () => {
+
+  user_id = localStorage.getItem('usuario_id');
     
     let containerTable = document.querySelector('.container-table');
     let {data} = await get('usuarios/tabla');

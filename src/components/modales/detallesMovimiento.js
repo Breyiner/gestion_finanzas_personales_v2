@@ -6,9 +6,12 @@ import { error, success } from '../../helpers/alertas';
 import { confirmModal } from './modalConfirm';
 
 let funcControlador = null;
-const usuario_id = parseInt(localStorage.getItem('usuario_id'));
+let usuario_id = null;
 
 export const abrirModalDetallesMov = async (controlador, idMovimiento) => {
+
+  usuario_id = parseInt(localStorage.getItem('usuario_id'));
+
     funcControlador = controlador;
     // Crear y mostrar el modal
     mostrarModal(htmlContent);
@@ -104,7 +107,7 @@ function configurarValidaciones() {
         validarTexto(e);
     });
     monto.addEventListener('keydown', (e) => {
-        validarMaximo(e, 15)
+        validarMaximo(e, 10)
         validarNumeros(e);
     });
     descripcion.addEventListener('keydown', (e) => {

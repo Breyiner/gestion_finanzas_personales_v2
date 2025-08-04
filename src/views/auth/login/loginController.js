@@ -81,5 +81,5 @@ async function validarSubmit(e) {
 document.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    if(e.target.classList.contains('form--login')) await validarSubmit(e);
+  if (e.target.closest('#form-login')) await validarSubmit(e);
 })

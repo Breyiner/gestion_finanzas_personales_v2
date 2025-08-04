@@ -100,10 +100,11 @@ export const validarPassword = (e) => {
   return true;
 }
 
-export const datos = {};
+export let datos = null;
 export const validarCampos = (event) => {
 
   let valido = true;
+  datos = {};
 
   const campos = [...event.target].filter((elemento) => elemento.hasAttribute("required") && (elemento.tagName == "INPUT" || elemento.tagName == "TEXTAREA" || elemento.tagName == "SELECT") || elemento.value);
 

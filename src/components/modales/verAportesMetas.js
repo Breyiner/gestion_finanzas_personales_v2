@@ -4,9 +4,12 @@ import { cerrarModal, mostrarModal } from '../../helpers/modalManagement';
 import htmlContent from  './verMovimientos.html?raw';
 import { formatter } from '../../helpers/formateadorPrecio.js';
 
-const usuario_id = parseInt(localStorage.getItem('usuario_id'));
+let usuario_id = null;
 
 export const abrirModalAportes = async (idMeta) => {
+
+  usuario_id = parseInt(localStorage.getItem('usuario_id'));
+
     // Crear y mostrar el modal
     mostrarModal(htmlContent);
     

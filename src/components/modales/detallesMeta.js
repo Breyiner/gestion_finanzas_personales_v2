@@ -8,9 +8,12 @@ import { confirmModal } from './modalConfirm';
 import { metasController } from '../../views/metas/metasController';
 
 
-const usuario_id = localStorage.getItem('usuario_id');
+let usuario_id = null;
 
 export const abrirModalDetallesMeta = async (idMeta) => {
+
+  usuario_id = localStorage.getItem('usuario_id');
+
     // Crear y mostrar el modal
     mostrarModal(htmlContent);
     
@@ -75,7 +78,7 @@ function configurarValidaciones() {
         validarTexto(e);
     });
     monto.addEventListener('keydown', (e) => {
-        validarMaximo(e, 15)
+        validarMaximo(e, 10)
         validarNumeros(e);
     });
     descripcion.addEventListener('keydown', (e) => {

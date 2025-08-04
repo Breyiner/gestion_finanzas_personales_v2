@@ -6,9 +6,12 @@ import * as validate from "../../helpers/validaciones.js";
 import { error, success } from '../../helpers/alertas.js';
 import { metasController } from '../../views/metas/metasController.js';
 
-const usuario_id = parseInt(localStorage.getItem('usuario_id'));
+let usuario_id = null;
 
 export const abrirModalNewMeta = async () => {
+
+  usuario_id = parseInt(localStorage.getItem('usuario_id'));
+
     // Crear y mostrar el modal
     mostrarModal(htmlContent);
     
@@ -31,7 +34,7 @@ async function configurarModalMeta() {
         validate.validarMaximo(e, 30)
     });
     monto.addEventListener('keydown', (e) => {
-        validate.validarMaximo(e, 15)
+        validate.validarMaximo(e, 10)
         validate.validarNumeros(e);
     });
     descripcion.addEventListener('keydown', (e) => {

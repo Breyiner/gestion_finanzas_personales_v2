@@ -63,7 +63,7 @@ function configurarValidaciones() {
 
 
     monto.addEventListener('keydown', (e) => {
-        validarMaximo(e, 15)
+        validarMaximo(e, 10)
         validarNumeros(e);
     });
     descripcion.addEventListener('keydown', (e) => {

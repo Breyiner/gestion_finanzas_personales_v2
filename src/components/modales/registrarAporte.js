@@ -23,7 +23,7 @@ async function configurarModalAporte(idMeta) {
     let descripcion = document.getElementById('descripcionAporte');
 
     monto.addEventListener('keydown', (e) => {
-        validate.validarMaximo(e, 15)
+        validate.validarMaximo(e, 10)
         validate.validarNumeros(e);
     });
     descripcion.addEventListener('keydown', (e) => {

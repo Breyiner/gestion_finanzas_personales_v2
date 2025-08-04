@@ -5,11 +5,14 @@ import htmlContent from  './registrarMovimiento.html?raw';
 import * as validate from "../../helpers/validaciones.js";
 import { error, success } from '../../helpers/alertas.js';
 
-const usuario_id = parseInt(localStorage.getItem('usuario_id'));
+let usuario_id = null;
 let fechaCreacion = null;
 let funcControlador = null;
 
 export const abrirModalNewMovimiento = async (controlador, fecha = null) => {
+
+  usuario_id = parseInt(localStorage.getItem('usuario_id'));
+
     funcControlador = controlador;
     fechaCreacion = fecha;
     // Crear y mostrar el modal
@@ -38,7 +41,7 @@ async function configurarModalMovimiento() {
         validate.validarMaximo(e, 30)
     });
     monto.addEventListener('keydown', (e) => {
-        validate.validarMaximo(e, 15);
+        validate.validarMaximo(e, 10);
         validate.validarNumeros(e);
     });
     descripcion.addEventListener('keydown', (e) => {
