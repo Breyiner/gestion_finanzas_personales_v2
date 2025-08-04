@@ -4,7 +4,7 @@ import { renderSidebar } from "../components/sidebar/sidebar";
 import { renderSidebarAdmin } from "../components/sidebarAdmin/sidebarAdmin";
 import { addClass, deleteClass } from "../helpers/modifyClass";
 import { routes } from "./routes"
-// import { isAuth } from "../helpers/auth";
+import { isAdmin, isAuth } from "../helpers/auth";
 
 let layoutCargado = false;
 
@@ -26,10 +26,10 @@ export const router = async (layout, header, sidebar, app) => {
         return;
     }
 
-    // if(ruta.private){
-    //     location.hash = "#/login";
-    //     return;
-    // }
+    if(ruta.private && !isAuth()){
+        location.hash = "#/login";
+        return;
+    }
 
     if(ruta.layout && !layoutCargado) {
         addClass(layout, 'layout');
@@ -50,10 +50,21 @@ export const router = async (layout, header, sidebar, app) => {
         layoutCargado = false;
     }
 
-    if(ruta.admin) {
+    if(ruta.admin && isAdmin()) {
         renderSidebarAdmin(sidebar);
         renderHeaderAdmin(header);
         layoutCargado = false;
+    }
+    else if (ruta.admin && !isAdmin()) {
+        header.innerHTML = "";
+        sidebar.innerHTML = "";
+        deleteClass(layout, 'layout');
+        deleteClass(header, 'header');
+        deleteClass(sidebar, 'sidebar');
+        deleteClass(app, 'app');
+        layoutCargado = false;
+        app.innerHTML = `<h2>No estás aurotizado</h2>`;
+        return;
     }
 
     await cargarVista(ruta.path, app);

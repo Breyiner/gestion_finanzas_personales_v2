@@ -33,35 +33,35 @@ export const routes = {
      inicio: {
           path: "home/index.html",
           controller: homeController,
-          private: false,
+          private: true,
           layout: true,
           admin: false
      },
      metas: {
           path: "metas/index.html",
           controller: metasController,
-          private: false,
+          private: true,
           layout: true,
           admin: false
      },
      calendario: {
           path: "calendario/index.html",
           controller: calendarioController,
-          private: false,
+          private: true,
           layout: true,
           admin: false
      },
      historial: {
           path: "historial/index.html",
           controller: historialController,
-          private: false,
+          private: true,
           layout: true,
           admin: false
      },
      perfil: {
           path: "perfil/index.html",
           controller: perfilController,
-          private: false,
+          private: true,
           layout: true,
           admin: false
      },
@@ -69,28 +69,28 @@ export const routes = {
           "": {
                path: "admin/inicio/index.html",
                controller: inicioAdminController,
-               private: false,
+               private: true,
                layout: true,
                admin: true
           },
           inicio: {
                path: "admin/inicio/index.html",
                controller: inicioAdminController,
-               private: false,
+               private: true,
                layout: true,
                admin: true
           },
           usuarios: {
                path: "admin/usuarios/index.html",
                controller: usuariosController,
-               private: false,
+               private: true,
                layout: true,
                admin: true
           },
           perfil: {
                path: "perfil/index.html",
                controller: perfilController,
-               private: false,
+               private: true,
                layout: true,
                admin: true
           }
