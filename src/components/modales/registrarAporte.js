@@ -75,6 +75,6 @@ async function guardarAporte(data) {
     else{
         let confirmacion = await success(response.message);
             
-        if(confirmacion.isConfirmed) metasController();
+        if(confirmacion.isConfirmed) await metasController();
     }
 }

@@ -3,10 +3,13 @@ import { cerrarModal, cerrarTodos, mostrarModal } from '../../helpers/modalManag
 import htmlContent from  './detallesMovimiento.html?raw';
 import { validarTexto, validarNumeros, validarCampo, validarCampos, validarMaximo, datos } from '../../helpers/validaciones';
 import { error, success } from '../../helpers/alertas';
-import { homeController } from '../../views/home/homeController';
 import { confirmModal } from './modalConfirm';
 
-export const abrirModalDetallesMov = async (idMovimiento) => {
+let funcControlador = null;
+const usuario_id = parseInt(localStorage.getItem('usuario_id'));
+
+export const abrirModalDetallesMov = async (controlador, idMovimiento) => {
+    funcControlador = controlador;
     // Crear y mostrar el modal
     mostrarModal(htmlContent);
     
@@ -18,7 +21,7 @@ export const abrirModalDetallesMov = async (idMovimiento) => {
 async function configurarModalMovimiento(idMovimiento) {
 
     const formulario = document.getElementById('form-detallesMovimiento');
-    const infoMovimiento = await get(`movimientos/${idMovimiento}/usuario/1`);
+    const infoMovimiento = await get(`movimientos/${idMovimiento}/usuario/${usuario_id}`);
 
     const [movimiento] = infoMovimiento.data; 
     console.log(movimiento);
@@ -200,14 +203,14 @@ function isSame(estadoOriginal, formEditado) {
 async function actualizarMovimiento(datos, idMovimiento) {
     console.log('Datos a enviar:', datos);
     
-    const response = await put(datos, `movimientos/${idMovimiento}/usuario/1`);
+    const response = await put(datos, `movimientos/${idMovimiento}/usuario/${usuario_id}`);
     
     cerrarTodos();
     if (response.success) {
 
         let confirmacion = await success(response.message);
         
-        if(confirmacion.isConfirmed) homeController();
+        if(confirmacion.isConfirmed) await funcControlador();
 
     } else {
         
@@ -228,7 +231,7 @@ async function confirmarEliminacion(idMovimiento) {
 
 
 async function eliminarMovimiento(idMovimiento) {
-    const response = await delet(`movimientos/${idMovimiento}/usuario/1`);
+    const response = await delet(`movimientos/${idMovimiento}/usuario/${usuario_id}`);
     
     cerrarTodos();
     
@@ -241,5 +244,5 @@ async function eliminarMovimiento(idMovimiento) {
 
     let confirmacion = await success(response.message);
             
-    if(confirmacion.isConfirmed) homeController();
+    if(confirmacion.isConfirmed) await funcControlador();
 }

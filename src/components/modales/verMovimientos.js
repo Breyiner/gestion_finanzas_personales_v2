@@ -4,6 +4,9 @@ import { cerrarModal, mostrarModal } from '../../helpers/modalManagement';
 import htmlContent from  './verMovimientos.html?raw';
 import { formatter } from '../../helpers/formateadorPrecio.js';
 
+const mesActual = new Date().getMonth() + 1;
+const usuario_id = parseInt(localStorage.getItem('usuario_id'));
+
 export const abrirModalMovimientos = async (idCategoria, idTipoMovimiento) => {
     // Crear y mostrar el modal
     mostrarModal(htmlContent);
@@ -19,7 +22,7 @@ async function configurarModalMovimiento(idCategoria, idTipoMovimiento) {
 
     if(idTipoMovimiento != 3) {
 
-        const infoMovimientos = await get(`movimientos/categoria/${idCategoria}/usuario/1/tipoMovimiento/${idTipoMovimiento}/mes/7`);
+        const infoMovimientos = await get(`movimientos/categoria/${idCategoria}/usuario/${usuario_id}/tipoMovimiento/${idTipoMovimiento}/mes/${mesActual}`);
     
         datos = infoMovimientos.data;
 
@@ -28,7 +31,7 @@ async function configurarModalMovimiento(idCategoria, idTipoMovimiento) {
     
     else {
         let idMeta = idCategoria;
-        const infoAportes = await get(`aportes/detallados/meta/${idMeta}/usuario/1/mes/7`);
+        const infoAportes = await get(`aportes/detallados/meta/${idMeta}/usuario/${usuario_id}/mes/${mesActual}`);
         
         datos = infoAportes.data;
         crearMovimientos(containerMovimientos, datos);

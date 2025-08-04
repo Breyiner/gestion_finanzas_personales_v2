@@ -26,7 +26,7 @@ async function configurarModalAporte(idAporte, idMeta) {
     formEditable(formulario, false);
 
 
-    await cargarFormulario(formulario, aporte);
+    await cargarFormulario(formulario, aporte); 
 
     configurarValidaciones();
 
@@ -88,7 +88,6 @@ function configurarEventos(formulario, aporte) {
 
             // Validar y guardar usando tu sistema de validación
             if (validarCampos({ target: formulario })) {
-                console.log(datos);
                 
                 // Deshabilitar botón mientras guarda
                 btn.disabled = true;
@@ -172,7 +171,7 @@ async function actualizarAporte(datos, idAporte, idMeta) {
 
         let confirmacion = await success(response.message);
         
-        if(confirmacion.isConfirmed) metasController();
+        if(confirmacion.isConfirmed) await metasController();
 
     } else {
         
@@ -206,5 +205,5 @@ async function eliminarAporte(idAporte, idMeta) {
 
     let confirmacion = await success(response.message);
             
-    if(confirmacion.isConfirmed) metasController();
+    if(confirmacion.isConfirmed) await metasController();
 }

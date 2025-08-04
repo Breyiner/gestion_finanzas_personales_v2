@@ -5,11 +5,19 @@ import { addClass, deleteClass } from '../../helpers/modifyClass';
 import { abrirModalNewMovimiento } from '../../components/modales/registrarMovimiento';
 import { abrirModalMovimientos } from '../../components/modales/verMovimientos';
 import { abrirModalDetallesMov } from '../../components/modales/detallesMovimiento';
+import { animateValue } from '../../helpers/animacionValores';
+
+let mesActual = null; 
+let usuario_id = null;
+
 
 export const homeController = async () => {
     
+    mesActual = new Date().getMonth() + 1;
+    usuario_id = parseInt(localStorage.getItem('usuario_id'));
+
     const containerResumen = document.querySelector('.container-resumen');
-    let infoResumen = await get(`dashboard/completo/usuario/1/mes/7`);
+    let infoResumen = await get(`dashboard/completo/usuario/${usuario_id}/mes/${mesActual}`);
 
     let datosResumen = infoResumen.data;
     
@@ -26,11 +34,10 @@ export const homeController = async () => {
     await switchAction();
 }
 
-function createResumen (container, data) {
+export function createResumen (container, data) {
     container.innerHTML = "";
 
     data.forEach(({icono, color, nombre, total}) => {
-        console.log(formatter.format(total));
         
         let movimientoResumen = document.createElement('div');
         movimientoResumen.classList.add('movimiento-resumen');
@@ -47,7 +54,7 @@ function createResumen (container, data) {
         
         let montoResumen = document.createElement('p');
         montoResumen.classList.add('movimiento-resumen__monto');
-        montoResumen.textContent = formatter.format(total);
+        animateValue(montoResumen, total);
 
         informacionResumen.append(tituloResumen, montoResumen);
 
@@ -79,7 +86,7 @@ function createSwitch (container, data) {
 
         let labelRadio = document.createElement('label');
         labelRadio.setAttribute('for', `radio-switch-${nombre.toLowerCase()}`);
-        labelRadio.classList.add('switch-filtro__name');
+        labelRadio.classList.add('switch-filtro__name', 'switch-filtreo__name--inicio');
         labelRadio.setAttribute('data-id', id);
         labelRadio.textContent = nombre;
 
@@ -91,7 +98,13 @@ function createSwitch (container, data) {
 
 function createCategoriaDetails (container, data) {
 
-    container.innerHTML = "";
+    if (data.length == 0) {
+        let sinRegistros = document.createElement('span');
+        sinRegistros.textContent = "No hay registros";
+        sinRegistros.classList.add('elemento-vacio');
+        container.append(sinRegistros);
+        return;
+    }
 
     data.forEach(({id, tipo_movimiento_id, icono, color, nombre, color_bg, cantidad, total}) => {        
         
@@ -167,13 +180,13 @@ async function switchAction() {
 
     containerCategorias.innerHTML = "";
     if(idTipo != 3) {
-        infoDetalles = await get(`dashboard/categorias/usuario/1/mes/7/tipo/${idTipo}`);
+        infoDetalles = await get(`dashboard/categorias/usuario/${usuario_id}/mes/${mesActual}/tipo/${idTipo}`);
 
         datosDetalles = infoDetalles.data;
 
     }
     else if(idTipo == 3) {
-        infoDetalles = await get(`dashboard/metas/detalle/usuario/1/mes/7`);
+        infoDetalles = await get(`dashboard/metas/detalle/usuario/${usuario_id}/mes/${mesActual}`);
 
         datosDetalles = infoDetalles.data;
     }
@@ -197,15 +210,15 @@ const detallesModal = async (movimiento) => {
 
     console.log(idMovimiento);
 
-    await abrirModalDetallesMov(idMovimiento);
+    await abrirModalDetallesMov(homeController, idMovimiento);
     
 }
 
 document.addEventListener('click', async (e) => {
 
-    if(e.target.closest('.switch-filtro__name')) setTimeout(async () => await switchAction(), 0);
+    if(e.target.closest('.switch-filtreo__name--inicio')) await switchAction();
 
-    if (e.target.closest('#nuevoMovimiento')) await abrirModalNewMovimiento();
+    if (e.target.closest('#nuevoMovimiento')) await abrirModalNewMovimiento(homeController);
     if (e.target.closest('.tile--categoria')) await verMovimientos(e.target.closest('.tile--categoria'));
     if (e.target.closest('.tile--movimiento')) await detallesModal(e.target.closest('.tile--movimiento'));
 
