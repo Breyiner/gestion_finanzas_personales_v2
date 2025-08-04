@@ -1,12 +1,17 @@
 // userModal.js
 import { get, post } from '../../helpers/api';
-import { cerrarModal, mostrarModal } from '../../helpers/modalManagement';
+import { cerrarModal, cerrarTodos, mostrarModal } from '../../helpers/modalManagement';
 import htmlContent from  './registrarMovimiento.html?raw';
 import * as validate from "../../helpers/validaciones.js";
 import { error, success } from '../../helpers/alertas.js';
-import { homeController } from '../../views/home/homeController.js';
 
-export const abrirModalNewMovimiento = async () => {
+const usuario_id = parseInt(localStorage.getItem('usuario_id'));
+let fechaCreacion = null;
+let funcControlador = null;
+
+export const abrirModalNewMovimiento = async (controlador, fecha = null) => {
+    funcControlador = controlador;
+    fechaCreacion = fecha;
     // Crear y mostrar el modal
     mostrarModal(htmlContent);
     
@@ -28,12 +33,18 @@ async function configurarModalMovimiento() {
     const selectCategorias = document.getElementById('categoriasMovimiento');
 
 
-    nombre.addEventListener('keydown', (e) => validate.validarMaximo(e, 30));
+    nombre.addEventListener('keydown', (e) => {
+        validate.validarTexto(e);
+        validate.validarMaximo(e, 30)
+    });
     monto.addEventListener('keydown', (e) => {
-        validate.validarMaximo(e, 15)
+        validate.validarMaximo(e, 15);
         validate.validarNumeros(e);
     });
-    descripcion.addEventListener('keydown', (e) => validate.validarMaximo(e, 50));
+    descripcion.addEventListener('keydown', (e) => {
+        validate.validarTexto(e);
+        validate.validarMaximo(e, 50)
+    });
 
     nombre.addEventListener("blur", validate.validarCampo);
     monto.addEventListener("blur", validate.validarCampo);
@@ -78,7 +89,6 @@ async function manejarSubmitMovimiento(e) {
     e.preventDefault();
 
     const submitBtn = document.getElementById('btnCrearMovimiento');
-    const originalText = submitBtn.textContent;
 
     
     let datosMovimiento = {};
@@ -89,7 +99,11 @@ async function manejarSubmitMovimiento(e) {
         
         delete datosMovimiento["tipo_movimiento_id"];
         
-        datosMovimiento.usuario_id = 1;
+        datosMovimiento.usuario_id = usuario_id;
+        
+        if(fechaCreacion) datosMovimiento.fecha_creacion = fechaCreacion;
+        console.log(datosMovimiento);
+        
         
         submitBtn.disabled = true;
         submitBtn.textContent = 'Guardando...';
@@ -112,9 +126,9 @@ async function guardarMovimiento(data) {
         return;
     }
     else{
-        cerrarModal();
+        cerrarTodos();
         let confirmacion = await success(movimientoCreado.message);
             
-        if(confirmacion.isConfirmed) homeController();
+        if(confirmacion.isConfirmed) await funcControlador();
     }
 }
