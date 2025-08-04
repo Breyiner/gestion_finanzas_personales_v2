@@ -4,6 +4,8 @@ import { cerrarModal, mostrarModal } from '../../helpers/modalManagement';
 import htmlContent from  './verMovimientos.html?raw';
 import { formatter } from '../../helpers/formateadorPrecio.js';
 
+const usuario_id = parseInt(localStorage.getItem('usuario_id'));
+
 export const abrirModalAportes = async (idMeta) => {
     // Crear y mostrar el modal
     mostrarModal(htmlContent);
@@ -16,7 +18,7 @@ async function configurarModalAportes(idMeta) {
     
     const containerAportes = document.querySelector('.tile-container--modal');
 
-    const infoAportes = await get(`aportes/detallados/meta/${idMeta}/usuario/1/mes/7`);
+    const infoAportes = await get(`aportes/detallados/meta/${idMeta}/usuario/${usuario_id}`);
     
     const datos = infoAportes.data;
     
@@ -39,6 +41,14 @@ function crearBotonNuevo(containerAportes, idMeta) {
 }
 
 async function crearAportes(container, data, extraClass = "") {
+
+    if (!data) {
+        let sinRegistros = document.createElement('span');
+        sinRegistros.textContent = "No hay registros";
+        sinRegistros.classList.add('elemento-vacio');
+        container.append(sinRegistros);
+        return;
+    }
 
     data.forEach(({id, meta_id, icono, color, nombre, color_bg, fecha_creacion, monto}) => {
         

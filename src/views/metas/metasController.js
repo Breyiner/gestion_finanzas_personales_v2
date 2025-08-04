@@ -7,12 +7,17 @@ import { abrirModalAportes } from '../../components/modales/verAportesMetas';
 import { abrirModalDetallesAporte } from '../../components/modales/detallesAporteMeta';
 import { abrirModalNewAporte } from '../../components/modales/registrarAporte';
 
+
+let usuario_id = null;
+
 export const metasController = async () => {
+
+    usuario_id = parseInt(localStorage.getItem('usuario_id'));
     
     const containerMetas = document.querySelector('.container-metas');
     containerMetas.innerHTML = "";
 
-    let {data} = await get(`metas/resumen/usuario/1`);
+    let {data} = await get(`metas/resumen/usuario/${usuario_id}`);
     
 
     await cargarMetas(containerMetas, data);
@@ -20,6 +25,14 @@ export const metasController = async () => {
 }
 
 async function cargarMetas(container, data) {
+
+    if (data.length == 0) {
+        let sinRegistros = document.createElement('span');
+        sinRegistros.textContent = "No hay registros";
+        sinRegistros.classList.add('elemento-vacio');
+        container.append(sinRegistros);
+        return;
+    }
 
     data.forEach(({id, nombre, fecha_limite, monto, total, mensaje}) => {
         

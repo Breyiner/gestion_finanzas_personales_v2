@@ -7,6 +7,9 @@ import { homeController } from '../../views/home/homeController';
 import { confirmModal } from './modalConfirm';
 import { metasController } from '../../views/metas/metasController';
 
+
+const usuario_id = localStorage.getItem('usuario_id');
+
 export const abrirModalDetallesMeta = async (idMeta) => {
     // Crear y mostrar el modal
     mostrarModal(htmlContent);
@@ -19,7 +22,7 @@ export const abrirModalDetallesMeta = async (idMeta) => {
 async function configurarModalMeta(idMeta) {
 
     const formulario = document.getElementById('form-detallesMeta');
-    const infoMeta = await get(`metas/${idMeta}/usuario/1/detalles`);
+    const infoMeta = await get(`metas/${idMeta}/usuario/${usuario_id}/detalles`);
 
     const meta = infoMeta.data; 
     console.log(meta);
@@ -178,15 +181,17 @@ async function actualizarMeta(datos, idMeta) {
     delete datosCorregidos.estado;
     
     if(!datosCorregidos.fecha_limite) datosCorregidos.fecha_limite = null;
+    console.log(datosCorregidos);
+    
 
-    const response = await put(datosCorregidos, `metas/${idMeta}/usuario/1`);
+    const response = await put(datosCorregidos, `metas/${idMeta}/usuario/${usuario_id}`);
     
     cerrarTodos();
     if (response.success) {
 
         let confirmacion = await success(response.message);
         
-        if(confirmacion.isConfirmed) metasController();
+        if(confirmacion.isConfirmed) await metasController();
 
     } else {
         
@@ -207,7 +212,7 @@ async function confirmarEliminacion(idMeta) {
 
 
 async function eliminarMeta(idMeta) {
-    const response = await delet(`metas/${idMeta}/usuario/1`);
+    const response = await delet(`metas/${idMeta}/usuario/${usuario_id}`);
     
     cerrarTodos();
     
@@ -220,5 +225,5 @@ async function eliminarMeta(idMeta) {
 
     let confirmacion = await success(response.message);
             
-    if(confirmacion.isConfirmed) metasController();
+    if(confirmacion.isConfirmed) await metasController();
 }

@@ -6,6 +6,8 @@ import * as validate from "../../helpers/validaciones.js";
 import { error, success } from '../../helpers/alertas.js';
 import { metasController } from '../../views/metas/metasController.js';
 
+const usuario_id = parseInt(localStorage.getItem('usuario_id'));
+
 export const abrirModalNewMeta = async () => {
     // Crear y mostrar el modal
     mostrarModal(htmlContent);
@@ -53,14 +55,16 @@ async function manejarSubmitMeta(e) {
     
     if(validate.validarCampos(e)){
         
-        datosMeta = validate.datos;
+        datosMeta = {...validate.datos};
         
-        datosMeta.usuario_id = 1;
+        datosMeta.usuario_id = usuario_id;
+        
         if(!datosMeta.fecha_limite) datosMeta.fecha_limite = null;
+        console.log(datosMeta);
         
         submitBtn.disabled = true;
         submitBtn.textContent = 'Guardando...';
-
+        
         await guardarMeta(datosMeta);
 
     }
@@ -72,11 +76,12 @@ async function guardarMeta(data) {
 
     let metaCreada = await post(data, 'metas');
         
-      
+    console.log(metaCreada);
+    
     if(!metaCreada.success) {
 
         error(metaCreada.message);
-        return;
+        cerrarModal();
     }
     else{
         cerrarModal();
