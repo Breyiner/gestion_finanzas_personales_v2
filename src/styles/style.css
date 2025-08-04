@@ -86,11 +86,6 @@
   display: none;
 }
 
-/* ================= SWEET ALERT ================= */
-.swal-over-modal {
-  z-index: 99999999 !important;
-}
-
 /* ================= SECCION ================= */
 .container {
   width: 100%;
@@ -139,6 +134,12 @@
   height: 650px;
 }
 
+.elemento-vacio {
+  color: #197364;
+  font-size: 1.2rem;
+  align-self: center;
+}
+
 
 /* ================= CONTENEDOR METAS ================= */
 .container-metas {
@@ -185,15 +186,28 @@
 
 
 /* ================= CONTENEDOR RESUMEN MOVIMIENTOS CALENDARIO ================= */
-.informacion--calendario {
+
+.informacion-calendario {
   width: 30%;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  gap: 20px;
+  gap: 60px;
+  padding: 30px 0;
 }
 
 
+.container-resumen-calendario {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 30px;
+}
+
+.fc-daygrid-more-link {
+  pointer-events: none !important;
+  cursor: default !important;
+  color: gray; 
+}
 /* ================= CONTAINER VISTA ADMIN ================= */
 .iformacion-admin {
   width: 100%;

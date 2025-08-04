@@ -21,7 +21,6 @@
   color: #6c757d;
   transition: all 0.2s ease;
   z-index: 2;
-  white-space: nowrap;
 }
 
 .switch-filtro__name.checkeado {

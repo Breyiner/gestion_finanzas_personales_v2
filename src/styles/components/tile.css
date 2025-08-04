@@ -15,6 +15,7 @@
 .tile:hover {
   transform: translateY(-4px);
   border-color: #197364;
+  z-index: 1001;
 }
 
 .tile__info {
