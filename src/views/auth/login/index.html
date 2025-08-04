@@ -6,20 +6,20 @@
 
 
   <div class="auth__content">
-    <form class="form form--login"> 
+    <form class="form form--login" autocomplete="off" novalidate> 
       <h4 class="form__title">Iniciar Sesión</h4>
 
       <div class="form__row">
         <div class="form__field">
           <label class="form__label" for="email">Correo:</label>
-          <input type="email" name="email" id="email" class="form__input">
+          <input type="email" name="correo" id="correo" class="form__input" required>
         </div>
       </div>
 
       <div class="form__row">
         <div class="form__field">
           <label class="form__label" for="contrasena">Contraseña:</label>
-          <input type="password" name="password" id="contrasena" class="form__input">
+          <input type="password" name="contrasena" id="contrasena" class="form__input" required>
         </div>
       </div>
 

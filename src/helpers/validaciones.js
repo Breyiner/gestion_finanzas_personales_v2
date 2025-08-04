@@ -50,6 +50,56 @@ export const validarMaximo = (event, maximo) => {
   if (!teclasEspeciales.includes(key) && event.target.value.length >= maximo) event.preventDefault(); 
 };
 
+export const validarCorreo = (e) => {
+
+  let correo = e.target;
+
+  const regexp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if(!regexp.test(correo.value))    {
+    agregarError(correo.parentElement, 'Formato de correo inválido');
+    return false;
+  } 
+
+  if (correo.parentElement.className.includes('error'))
+    quitarError(correo.parentElement);
+  return true;
+
+}
+
+export const validarPassword = (e) => {
+
+  
+  if(!/[A-Z]/.test(contrasena.value))    {
+    agregarError(contrasena.parentElement, 'Debe tener una mayúscula');
+    return false;
+  } 
+
+  if(!/[a-z]/.test(contrasena.value))    {
+    agregarError(contrasena.parentElement, 'Debe tener una minúscula');
+    return false;
+  } 
+
+  if(!/\d/.test(contrasena.value))    {
+    agregarError(contrasena.parentElement, 'Debe tener un número');
+    return false;
+  } 
+
+  if(!/\W/.test(contrasena.value))    {
+    agregarError(contrasena.parentElement, 'Debe tener un caracter especial');
+    return false;
+  } 
+
+  if(!/^.{8,}$/.test(contrasena.value))    {
+    agregarError(contrasena.parentElement, 'Mínimo 8 caracteres');
+    return false;
+  } 
+
+  if (contrasena.parentElement.className.includes('error'))
+    quitarError(correo.parentElement);
+  return true;
+}
+
 export const datos = {};
 export const validarCampos = (event) => {
 
@@ -58,13 +108,18 @@ export const validarCampos = (event) => {
   const campos = [...event.target].filter((elemento) => elemento.hasAttribute("required") && (elemento.tagName == "INPUT" || elemento.tagName == "TEXTAREA" || elemento.tagName == "SELECT") || elemento.value);
 
   campos.forEach((campo) => {
+
     if (!validarCampo({ target: campo })) valido = false;
 
+    if(campo.type == "email") valido = validarCorreo({ target: campo });
+    if(campo.type == "password") valido = validarPassword({ target: campo });
+
     if(!isNaN(campo.value)) 
-        datos[campo.getAttribute("name")] = Number(campo.value);
+        datos[campo.getAttribute("name")] = Number(campo.value.trim());
     else 
-        datos[campo.getAttribute("name")] = campo.value;
+        datos[campo.getAttribute("name")] = campo.value.trim();
   });
 
+  
   return valido;
 };
