@@ -69,6 +69,7 @@ export const validarCorreo = (e) => {
 
 export const validarPassword = (e) => {
 
+  let contrasena = e.target;
   
   if(!/[A-Z]/.test(contrasena.value))    {
     agregarError(contrasena.parentElement, 'Debe tener una mayúscula');
@@ -109,11 +110,11 @@ export const validarCampos = (event) => {
   const campos = [...event.target].filter((elemento) => elemento.hasAttribute("required") && (elemento.tagName == "INPUT" || elemento.tagName == "TEXTAREA" || elemento.tagName == "SELECT") || elemento.value);
 
   campos.forEach((campo) => {
-
-    if (!validarCampo({ target: campo })) valido = false;
-
+    
     if(campo.type == "email") valido = validarCorreo({ target: campo });
     if(campo.type == "password") valido = validarPassword({ target: campo });
+    
+    if (!validarCampo({ target: campo })) valido = false;
 
     if(!isNaN(campo.value)) 
         datos[campo.getAttribute("name")] = Number(campo.value.trim());
