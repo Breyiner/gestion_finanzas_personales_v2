@@ -41,6 +41,19 @@ export const put = async (datos, endpoint) => {
     return await data.json();
 }
 
+export const patch = async (datos, endpoint) => {
+  let data = await fetch(`${urlBase}/${endpoint}`, {
+        method: 'PATCH',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+    });
+
+    return await data.json();
+}
+
 export const delet = async (endpoint) => {
   let data = await fetch(`${urlBase}/${endpoint}`, {
         method: 'DELETE',
