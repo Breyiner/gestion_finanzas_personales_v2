@@ -68,7 +68,6 @@ function configurarValidaciones() {
     });
     descripcion.addEventListener('keydown', (e) => {
         validarMaximo(e, 50)
-        validarTexto(e);
     });
 
     monto.addEventListener("blur", validarCampo);
@@ -192,7 +191,7 @@ async function confirmarEliminacion(aporte) {
 
 
 async function eliminarAporte(idAporte, idMeta) {
-    const response = await delet(`aportes/${idAporte}/meta/${idMeta}`);
+    const response = await delet(`aportes/soft/${idAporte}`);
     
     cerrarTodos();
     

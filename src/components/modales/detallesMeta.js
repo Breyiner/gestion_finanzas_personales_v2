@@ -82,8 +82,7 @@ function configurarValidaciones() {
         validarNumeros(e);
     });
     descripcion.addEventListener('keydown', (e) => {
-        validarMaximo(e, 50)
-        validarTexto(e);
+        validarMaximo(e, 50);
     });
 
     nombre.addEventListener("blur", validarCampo);
@@ -215,7 +214,7 @@ async function confirmarEliminacion(idMeta) {
 
 
 async function eliminarMeta(idMeta) {
-    const response = await delet(`metas/${idMeta}/usuario/${usuario_id}`);
+    const response = await delet(`metas/soft/${idMeta}`);
     
     cerrarTodos();
     

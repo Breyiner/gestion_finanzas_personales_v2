@@ -38,7 +38,6 @@ async function configurarModalMeta() {
         validate.validarNumeros(e);
     });
     descripcion.addEventListener('keydown', (e) => {
-        validate.validarTexto(e);
         validate.validarMaximo(e, 50)
     });
 

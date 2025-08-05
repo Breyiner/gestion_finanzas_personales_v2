@@ -25,9 +25,9 @@ async function configurarModalMovimientos(fecha, idTipoMovimiento) {
     const containerMovimientos = document.querySelector('.tile-container--modal');
     let datos = [];
 
-    crearBotonNuevo(containerMovimientos, fecha);
-
+    
     if(idTipoMovimiento != 3) {
+        crearBotonNuevo(containerMovimientos, fecha);
         
         const infoMovimientos = await get(`movimientos/usuario/${usuario_id}/tipoMovimiento/${idTipoMovimiento}/fecha/${fecha}`);
     
@@ -39,11 +39,10 @@ async function configurarModalMovimientos(fecha, idTipoMovimiento) {
     }
     
     else {
-        // let idMeta = idCategoria;
-        // const infoMovimientos = await get(`Movimientos/detallados/meta/${idMeta}/usuario/1/mes/7`);
+        const infoMovimientos = await get(`aportes/resumidos/usuario/${usuario_id}/fecha/${fecha}`);
         
-        // datos = infoMovimientos.data;
-        // crearMovimientos(containerMovimientos, datos);
+        datos = infoMovimientos.data;
+        crearMovimientos(containerMovimientos, datos);
     }
 
 }
@@ -54,7 +53,7 @@ function crearBotonNuevo(container, fecha) {
     btnNuevoMovimiento.setAttribute('type', 'button');
     btnNuevoMovimiento.setAttribute('id', 'nuevoMovimientoCalendario');
     btnNuevoMovimiento.setAttribute('data-fecha', fecha);
-    btnNuevoMovimiento.classList.add('boton', 'boton-txt-mainColor', 'boton--grande', 'boton--borde-mainColor');
+    btnNuevoMovimiento.classList.add('boton', 'boton-txt-mainColor', 'boton--grande', 'boton--borde-mainColor', 'boton--none-bg');
     btnNuevoMovimiento.textContent = "Registrar Movimiento";
 
     container.append(btnNuevoMovimiento);

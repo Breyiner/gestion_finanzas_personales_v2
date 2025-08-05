@@ -37,7 +37,7 @@ function crearBotonNuevo(containerAportes, idMeta) {
     btnNuevoAporte.setAttribute('type', 'button');
     btnNuevoAporte.setAttribute('id', 'nuevoAporte');
     btnNuevoAporte.setAttribute('data-meta_id', idMeta);
-    btnNuevoAporte.classList.add('boton', 'boton-txt-mainColor', 'boton--grande', 'boton--borde-mainColor');
+    btnNuevoAporte.classList.add('boton', 'boton-txt-mainColor', 'boton--grande', 'boton--borde-mainColor', 'boton--none-bg');
     btnNuevoAporte.textContent = "Registrar aporte";
 
     containerAportes.append(btnNuevoAporte);

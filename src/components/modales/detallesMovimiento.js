@@ -111,8 +111,7 @@ function configurarValidaciones() {
         validarNumeros(e);
     });
     descripcion.addEventListener('keydown', (e) => {
-        validarMaximo(e, 50)
-        validarTexto(e);
+        validarMaximo(e, 50);
     });
 
     nombre.addEventListener("blur", validarCampo);
@@ -234,7 +233,7 @@ async function confirmarEliminacion(idMovimiento) {
 
 
 async function eliminarMovimiento(idMovimiento) {
-    const response = await delet(`movimientos/${idMovimiento}/usuario/${usuario_id}`);
+    const response = await delet(`movimientos/soft/${idMovimiento}`);
     
     cerrarTodos();
     
