@@ -50,3 +50,7 @@
   border: 2px dashed #197364;
   border-radius: 10px;
 }
+
+.boton--none-bg {
+  background-color: transparent;
+}
