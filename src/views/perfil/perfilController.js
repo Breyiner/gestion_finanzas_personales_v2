@@ -140,7 +140,10 @@ async function validarSubmitUsuario(e) {
     
             let confirmacion = await success(response.message);
             
-            if(confirmacion.isConfirmed) await perfilController();
+          if (confirmacion.isConfirmed) {
+            success('Inicie sesión nuevamente para aplicar cambios');
+            await perfilController();
+          }
     
         } else {
             
@@ -153,7 +156,11 @@ async function validarSubmitUsuario(e) {
     
         }
         
-    }
+  }
+  
+  else {
+    error('Debe llenar los campos correctamente');
+  }
 
 }
 
@@ -185,6 +192,9 @@ async function validarSubmitPassword(e) {
     
         }
         
+  }
+    else {
+      error('Debe llenar los campos correctamente');
     }
 
 }

@@ -69,15 +69,15 @@ async function guardarAporte(data) {
         console.log(response);
         
         if(!response.success) {
-        cerrarTodos();
-
-        if(response.data)  {
+          
+          if(response.data)  {
             await errorModal(response.data[0]);
             return;
+          }
+          await errorModal(response.message);
         }
-            await errorModal(response.message);
-    }
-    else{
+        else{
+      cerrarTodos();
         let confirmacion = await success(response.message);
             
         if(confirmacion.isConfirmed) await metasController();

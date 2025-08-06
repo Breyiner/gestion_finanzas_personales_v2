@@ -114,7 +114,10 @@ async function validarSubmit(e) {
             
             error(response.message);
         }
-    }
+  }
+  else {
+    error('Debe llenar los campos correctamente');
+  }
 
 }
 
