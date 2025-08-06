@@ -4,14 +4,17 @@ import { cerrarModal, cerrarTodos, mostrarModal } from '../../helpers/modalManag
 import htmlContent from  './registrarMovimiento.html?raw';
 import * as validate from "../../helpers/validaciones.js";
 import { error, success } from '../../helpers/alertas.js';
+import { errorModal } from './modalError.js';
 
 let usuario_id = null;
 let fechaCreacion = null;
 let funcControlador = null;
+let idTipoMovimiento = null;
 
-export const abrirModalNewMovimiento = async (controlador, fecha = null) => {
+export const abrirModalNewMovimiento = async (controlador, tipoMovimiento, fecha = null) => {
 
   usuario_id = parseInt(localStorage.getItem('usuario_id'));
+  idTipoMovimiento = tipoMovimiento;
 
     funcControlador = controlador;
     fechaCreacion = fecha;
@@ -35,6 +38,8 @@ async function configurarModalMovimiento() {
     const selectTipos = document.getElementById('tiposMovimiento');
     const selectCategorias = document.getElementById('categoriasMovimiento');
 
+    selectTipos.value = idTipoMovimiento;
+    await cargarCategorias(selectTipos.value);
 
     nombre.addEventListener('keydown', (e) => {
         validate.validarTexto(e);
@@ -50,7 +55,6 @@ async function configurarModalMovimiento() {
 
     nombre.addEventListener("blur", validate.validarCampo);
     monto.addEventListener("blur", validate.validarCampo);
-    descripcion.addEventListener("blur", validate.validarCampo);
     selectTipos.addEventListener("blur", validate.validarCampo);
     selectCategorias.addEventListener("blur", validate.validarCampo);
 
@@ -68,8 +72,6 @@ async function cargarTipos() {
             selectTipos.innerHTML += `<option value="${tipo.id}">${tipo.nombre}</option>`;
     });
 
-
-    selectTipos.addEventListener('change', async () => await cargarCategorias(selectTipos.value))
 }
     
 async function cargarCategorias(idTipo) {
@@ -91,6 +93,7 @@ async function manejarSubmitMovimiento(e) {
     e.preventDefault();
 
     const submitBtn = document.getElementById('btnCrearMovimiento');
+    const textoOriginal = submitBtn.textContent;
 
     
     let datosMovimiento = {};
@@ -112,6 +115,8 @@ async function manejarSubmitMovimiento(e) {
 
         await guardarMovimiento(datosMovimiento);
 
+        submitBtn.disabled = false;
+        submitBtn.textContent = textoOriginal;
     }
     
 }
@@ -124,8 +129,12 @@ async function guardarMovimiento(data) {
       
     if(!movimientoCreado.success) {
 
-        error(movimientoCreado.message);
-        return;
+        if(movimientoCreado.data)  {
+           await errorModal(movimientoCreado.data[0]);
+            return;
+        }
+           await errorModal(movimientoCreado.message);
+        
     }
     else{
         cerrarTodos();

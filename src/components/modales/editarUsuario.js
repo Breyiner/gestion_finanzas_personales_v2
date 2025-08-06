@@ -4,6 +4,7 @@ import { cerrarTodos, mostrarModal } from '../../helpers/modalManagement';
 import { datos, validarCampo, validarCampos, validarCorreo, validarMaximo, validarPassword, validarTexto } from '../../helpers/validaciones';
 import { usuariosController } from '../../views/admin/usuarios/usuariosController';
 import htmlContent from  './editarUsuario.html?raw';
+import { errorModal } from './modalError';
 
 
 let usuario_id = null;
@@ -169,8 +170,8 @@ async function validarSubmit(e) {
         botonEditar.textContent = textoOriginal;
         botonEditar.disabled = false;
         
-        cerrarTodos();
         if (response.success) {
+            cerrarTodos();
     
             let confirmacion = await success(response.message);
             
@@ -178,7 +179,11 @@ async function validarSubmit(e) {
     
         } else {
             
-            error(response.message);
+            if(response.data)  {
+                await errorModal(response.data[0]);
+                return;
+            }
+                await errorModal(response.message);
     
         }
         

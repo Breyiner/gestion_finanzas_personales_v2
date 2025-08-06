@@ -97,6 +97,11 @@
   height: 100%;
   position: relative;
 }
+
+.invisible {
+  display: none;
+}
+
 /* ================= ENCABEZADO DE LAS SECCIONES ================= */
 .section-header__title {
   color: #197364;

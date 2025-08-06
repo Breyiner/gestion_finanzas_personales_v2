@@ -5,6 +5,7 @@ import htmlContent from  './registrarAporte.html?raw';
 import * as validate from "../../helpers/validaciones.js";
 import { error, success } from '../../helpers/alertas.js';
 import { metasController } from '../../views/metas/metasController.js';
+import { errorModal } from './modalError.js';
 
 export const abrirModalNewAporte = async (idMeta) => {
     // Crear y mostrar el modal
@@ -31,7 +32,6 @@ async function configurarModalAporte(idMeta) {
     });
 
     monto.addEventListener("blur", validate.validarCampo);
-    descripcion.addEventListener("blur", validate.validarCampo);
 
     form.addEventListener('submit', async (e) => await manejarSubmitAporte(e, idMeta));
 }
@@ -40,6 +40,7 @@ async function manejarSubmitAporte(e, idMeta) {
     e.preventDefault();
 
     const submitBtn = document.getElementById('btnCrearAporte');
+    const textoOriginal = submitBtn.textContent;
     
     let datosAporte = {};
     
@@ -52,9 +53,11 @@ async function manejarSubmitAporte(e, idMeta) {
         
         submitBtn.disabled = true;
         submitBtn.textContent = 'Guardando...';
-
+        
         await guardarAporte(datosAporte);
-
+        
+        submitBtn.disabled = falase;
+        submitBtn.textContent = textoOriginal;
     }
     
 }
@@ -65,11 +68,14 @@ async function guardarAporte(data) {
     let response = await post(data, 'aportes');
         console.log(response);
         
-    cerrarTodos();
-    if(!response.success) {
+        if(!response.success) {
+        cerrarTodos();
 
-        error(response.message);
-        return;
+        if(response.data)  {
+            await errorModal(response.data[0]);
+            return;
+        }
+            await errorModal(response.message);
     }
     else{
         let confirmacion = await success(response.message);

@@ -3,6 +3,7 @@ import { get, post } from '../../helpers/api';
 import { cerrarTodos, mostrarModal } from '../../helpers/modalManagement';
 import { datos, validarCampo, validarCampos, validarCorreo, validarMaximo, validarPassword, validarTexto } from '../../helpers/validaciones';
 import htmlContent from  './crearUsuario.html?raw';
+import { errorModal } from './modalError';
 
 let funcControlador = null;
 
@@ -112,14 +113,18 @@ async function validarSubmit(e) {
         botonCrear.textContent = textoOriginal;
         botonCrear.disabled = false;
 
-        cerrarTodos();
         if(response.success) {
+            cerrarTodos();
             let confirmacion = success(response.message);
             e.target.reset();   
             if((await confirmacion).isConfirmed) funcControlador();
         }
         else {
-            error(response.message);
+            if(response.data)  {
+                await errorModal(response.data[0]);
+                return;
+            }
+                await errorModal(response.message);
         }
     }
 

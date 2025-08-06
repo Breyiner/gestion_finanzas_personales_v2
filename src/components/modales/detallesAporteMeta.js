@@ -5,6 +5,7 @@ import { validarTexto, validarNumeros, validarCampo, validarCampos, validarMaxim
 import { error, success } from '../../helpers/alertas';
 import { confirmModal } from './modalConfirm';
 import { metasController } from '../../views/metas/metasController';
+import { errorModal } from './modalError';
 
 
 export const abrirModalDetallesAporte = async (idAporte, idMeta) => {
@@ -71,7 +72,6 @@ function configurarValidaciones() {
     });
 
     monto.addEventListener("blur", validarCampo);
-    descripcion.addEventListener("blur", validarCampo);
 
 }
 
@@ -82,6 +82,7 @@ function configurarEventos(formulario, aporte) {
     document.getElementById('editarAporte').addEventListener('click', async (e) => {
         e.preventDefault();
         const btn = e.target;
+        const textoOriginal = btn.textContent;
         
         if (modoEdicion) {
 
@@ -94,6 +95,9 @@ function configurarEventos(formulario, aporte) {
                 
                 if (!isSame(estadoOriginal, formulario)) {
                     await actualizarAporte(datos, aporte.id, aporte.meta_id);
+
+                    btn.disabled = false;
+                    btn.textContent = textoOriginal;
                 }
                 
                 formEditable(formulario, false);
@@ -165,8 +169,8 @@ async function actualizarAporte(datos, idAporte, idMeta) {
 
     const response = await put(datosCorregidos, `aportes/${idAporte}/meta/${idMeta}`);
     
-    cerrarTodos();
     if (response.success) {
+        cerrarTodos();
 
         let confirmacion = await success(response.message);
         
@@ -174,7 +178,11 @@ async function actualizarAporte(datos, idAporte, idMeta) {
 
     } else {
         
-        error(response.message);
+            if(response.data)  {
+                await errorModal(response.data[0]);
+                return;
+            }
+                await errorModal(response.message);
 
     }
 }

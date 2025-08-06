@@ -4,6 +4,7 @@ import htmlContent from  './detallesMovimiento.html?raw';
 import { validarTexto, validarNumeros, validarCampo, validarCampos, validarMaximo, datos } from '../../helpers/validaciones';
 import { error, success } from '../../helpers/alertas';
 import { confirmModal } from './modalConfirm';
+import { errorModal } from './modalError';
 
 let funcControlador = null;
 let usuario_id = null;
@@ -116,7 +117,6 @@ function configurarValidaciones() {
 
     nombre.addEventListener("blur", validarCampo);
     monto.addEventListener("blur", validarCampo);
-    descripcion.addEventListener("blur", validarCampo);
     selectTipos.addEventListener("blur", validarCampo);
     selectCategorias.addEventListener("blur", validarCampo);
 
@@ -129,6 +129,7 @@ function configurarEventos(formulario, movimiento) {
     document.getElementById('editarMovimiento').addEventListener('click', async (e) => {
         e.preventDefault();
         const btn = e.target;
+        const textoOriginal = btn.textContent;
         
         if (modoEdicion) {
 
@@ -140,6 +141,9 @@ function configurarEventos(formulario, movimiento) {
                 
                 if (!isSame(estadoOriginal, formulario)) {
                     await actualizarMovimiento(datos, movimiento.id);
+                    btn.disabled = false;
+                    btn.textContent = textoOriginal;
+
                 }
                 
                 formEditable(formulario, false);
@@ -207,8 +211,8 @@ async function actualizarMovimiento(datos, idMovimiento) {
     
     const response = await put(datos, `movimientos/${idMovimiento}/usuario/${usuario_id}`);
     
-    cerrarTodos();
     if (response.success) {
+        cerrarTodos();
 
         let confirmacion = await success(response.message);
         
@@ -216,7 +220,11 @@ async function actualizarMovimiento(datos, idMovimiento) {
 
     } else {
         
-        error(response.message);
+            if(response.data)  {
+                await errorModal(response.data[0]);
+                return;
+            }
+                await errorModal(response.message);
 
     }
 }

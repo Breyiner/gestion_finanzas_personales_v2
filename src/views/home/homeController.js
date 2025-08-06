@@ -9,7 +9,7 @@ import { animateValue } from '../../helpers/animacionValores';
 
 let mesActual = null; 
 let usuario_id = null;
-
+let idtipoMovimiento = null;
 
 export const homeController = async () => {
     
@@ -180,17 +180,39 @@ async function switchAction() {
 
     containerCategorias.innerHTML = "";
     if(idTipo != 3) {
+        mostrarNuevo();
+        idtipoMovimiento = idTipo;
         infoDetalles = await get(`dashboard/categorias/usuario/${usuario_id}/mes/${mesActual}/tipo/${idTipo}`);
 
         datosDetalles = infoDetalles.data;
 
     }
     else if(idTipo == 3) {
+        ocultarNuevo();
         infoDetalles = await get(`dashboard/metas/detalle/usuario/${usuario_id}/mes/${mesActual}`);
 
         datosDetalles = infoDetalles.data;
+
+        console.log(datosDetalles);
+        
     }
     createCategoriaDetails(containerCategorias, datosDetalles);
+}
+
+function mostrarNuevo() {
+
+    let btnNuevo = document.querySelector('#nuevoMovimiento');
+
+    deleteClass(btnNuevo, 'invisible');
+    
+}
+
+function ocultarNuevo() {
+    
+    let btnNuevo = document.querySelector('#nuevoMovimiento');
+    
+    addClass(btnNuevo, 'invisible');
+    
 }
 
 
@@ -218,7 +240,7 @@ document.addEventListener('click', async (e) => {
 
     if(e.target.closest('.switch-filtreo__name--inicio')) await switchAction();
 
-    if (e.target.closest('#nuevoMovimiento')) await abrirModalNewMovimiento(homeController);
+    if (e.target.closest('#nuevoMovimiento')) await abrirModalNewMovimiento(homeController, idtipoMovimiento);
     if (e.target.closest('.tile--categoria')) await verMovimientos(e.target.closest('.tile--categoria'));
     if (e.target.closest('.tile--movimiento')) await detallesModal(e.target.closest('.tile--movimiento'));
 

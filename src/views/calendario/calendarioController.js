@@ -15,6 +15,7 @@ let calendar =  null;
 let numberMes = null;
 let tipoMovimiento = null;
 let fechaSeleccionada = null;
+let idTipoMovimiento = null;
 
 
 export const calendarioController = async () => {
@@ -108,6 +109,7 @@ async function switchAction() {
     }
 
     if(idTipo != 3) {
+        idTipoMovimiento = idTipo;
   
       const {data} = await get(`movimientos/usuario/${usuario_id}/tipoMovimiento/${idTipo}/mes/${numberMes}`)
       await obtenerMovimientosCalendario(data);
@@ -199,7 +201,7 @@ const detallesModal = async (movimiento) => {
 document.addEventListener('click', async (e) => {
 
     if(e.target.closest('.switch-filtreo__name--calendario')) await switchAction();
-    if (e.target.closest('#nuevoMovimientoCalendario')) await abrirModalNewMovimiento(calendarioController, fechaSeleccionada);
+    if (e.target.closest('#nuevoMovimientoCalendario')) await abrirModalNewMovimiento(calendarioController, idTipoMovimiento, fechaSeleccionada);
     if (e.target.closest('.tile--movimientoCalendario')) await detallesModal(e.target.closest('.tile--movimientoCalendario'));
     // if (e.target.closest('#registarMovimiento')) mostrarModal(modalCrear);
 

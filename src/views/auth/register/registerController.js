@@ -83,10 +83,8 @@ function gestionarValidaciones() {
         validarCorreo(e);
     });
 
-    contrasena.addEventListener('blur', (e) => {
-        validarCampo(e);
-        validarPassword(e);
-    });
+    contrasena.addEventListener('blur', (e) => validarCampo(e));
+    contrasena.addEventListener('input', (e) => validarPassword(e));
 }
 
 async function validarSubmit(e) {

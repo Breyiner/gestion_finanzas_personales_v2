@@ -5,6 +5,7 @@ import htmlContent from  './crearMeta.html?raw';
 import * as validate from "../../helpers/validaciones.js";
 import { error, success } from '../../helpers/alertas.js';
 import { metasController } from '../../views/metas/metasController.js';
+import { errorModal } from './modalError.js';
 
 let usuario_id = null;
 
@@ -43,7 +44,6 @@ async function configurarModalMeta() {
 
     nombre.addEventListener("blur", validate.validarCampo);
     monto.addEventListener("blur", validate.validarCampo);
-    descripcion.addEventListener("blur", validate.validarCampo);
 
     form.addEventListener('submit', await manejarSubmitMeta);
 }
@@ -52,6 +52,7 @@ async function manejarSubmitMeta(e) {
     e.preventDefault();
 
     const submitBtn = document.getElementById('btnCrearMeta');
+    const textoOriginal = submitBtn.textContent;
     
     let datosMeta = {};
     
@@ -69,6 +70,8 @@ async function manejarSubmitMeta(e) {
         
         await guardarMeta(datosMeta);
 
+        submitBtn.disabled = false;
+        submitBtn.textContent = textoOriginal;
     }
     
 }
@@ -82,8 +85,11 @@ async function guardarMeta(data) {
     
     if(!metaCreada.success) {
 
-        error(metaCreada.message);
-        cerrarModal();
+        if(metaCreada.data)  {
+           await errorModal(metaCreada.data[0]);
+            return;
+        }
+           await errorModal(metaCreada.message);
     }
     else{
         cerrarModal();

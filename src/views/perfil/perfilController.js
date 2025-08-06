@@ -113,9 +113,10 @@ function configurarValidaciones() {
         validarCorreo(e);
     });
 
-    oldPass.addEventListener('blur', (e) => validarPassword(e));
-    newPass.addEventListener('blur', (e) => validarPassword(e));
-    confirmPass.addEventListener('blur', (e) => validarPassword(e));
+    // oldPass.addEventListener('keydown', (e) => validarPassword(e));
+    oldPass.addEventListener('input', (e) => validarPassword(e));
+    newPass.addEventListener('input', (e) => validarPassword(e));
+    confirmPass.addEventListener('input', (e) => validarPassword(e));
     
 
 }
@@ -142,6 +143,11 @@ async function validarSubmitUsuario(e) {
             if(confirmacion.isConfirmed) await perfilController();
     
         } else {
+            
+            if(response.data)  {
+                error(response.data[0]);
+                return;
+            }
             
             error(response.message);
     

@@ -69,6 +69,7 @@ export const validarCorreo = (e) => {
 
 export const validarPassword = (e) => {
 
+  const regexp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
   let contrasena = e.target;
   
   if(!/[A-Z]/.test(contrasena.value))    {
@@ -96,8 +97,13 @@ export const validarPassword = (e) => {
     return false;
   } 
 
+  if(!regexp.test(contrasena.value)) {
+    agregarError(contrasena.parentElement, 'Formato inválido');
+    return false;
+  }
+
   if (contrasena.parentElement.className.includes('error'))
-    quitarError(correo.parentElement);
+    quitarError(contrasena.parentElement);
   return true;
 }
 

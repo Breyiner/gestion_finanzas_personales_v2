@@ -94,3 +94,27 @@
   display: flex;
   gap: 50px;
 }
+
+.modal-error {
+  margin: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+.modal-error__icon {
+  color: #da6e26;
+  font-size: 7rem;
+}
+
+.modal-error__title {
+  color: #197364;
+  font-size: 1.4rem;
+}
+
+.modal-error__botones {
+  display: flex;
+  gap: 50px;
+}

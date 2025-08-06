@@ -6,6 +6,7 @@ import { error, success } from '../../helpers/alertas';
 import { homeController } from '../../views/home/homeController';
 import { confirmModal } from './modalConfirm';
 import { metasController } from '../../views/metas/metasController';
+import { errorModal } from './modalError';
 
 
 let usuario_id = null;
@@ -87,7 +88,6 @@ function configurarValidaciones() {
 
     nombre.addEventListener("blur", validarCampo);
     monto.addEventListener("blur", validarCampo);
-    descripcion.addEventListener("blur", validarCampo);
 
 }
 
@@ -98,6 +98,7 @@ function configurarEventos(formulario, meta) {
     document.getElementById('editarMeta').addEventListener('click', async (e) => {
         e.preventDefault();
         const btn = e.target;
+        const textoOriginal = btn.textContent;
         
         if (modoEdicion) {
 
@@ -111,6 +112,9 @@ function configurarEventos(formulario, meta) {
                 
                 if (!isSame(estadoOriginal, formulario)) {
                     await actualizarMeta(datos, meta.id);
+                    btn.disabled = false;
+                    btn.textContent = textoOriginal;
+
                 }
                 
                 formEditable(formulario, false);
@@ -188,8 +192,8 @@ async function actualizarMeta(datos, idMeta) {
 
     const response = await put(datosCorregidos, `metas/${idMeta}/usuario/${usuario_id}`);
     
-    cerrarTodos();
     if (response.success) {
+        cerrarTodos();
 
         let confirmacion = await success(response.message);
         
@@ -197,7 +201,11 @@ async function actualizarMeta(datos, idMeta) {
 
     } else {
         
-        error(response.message);
+            if(response.data)  {
+                await errorModal(response.data[0]);
+                return;
+            }
+                await errorModal(response.message);
 
     }
 }
