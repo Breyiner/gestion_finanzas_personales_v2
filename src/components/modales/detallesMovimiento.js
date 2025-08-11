@@ -24,10 +24,10 @@ export const abrirModalDetallesMov = async (controlador, idMovimiento) => {
 
 async function configurarModalMovimiento(idMovimiento) {
 
-    const formulario = document.getElementById('form-detallesMovimiento');
-    const infoMovimiento = await get(`movimientos/${idMovimiento}/usuario/${usuario_id}`);
+        const formulario = document.getElementById('form-detallesMovimiento');
+        const infoMovimiento = await get(`movimientos/${idMovimiento}/usuario/${usuario_id}`);
 
-    const [movimiento] = infoMovimiento.data; 
+        const [movimiento] = infoMovimiento.data; 
     console.log(movimiento);
 
     formEditable(formulario, false);

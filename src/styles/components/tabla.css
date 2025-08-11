@@ -9,6 +9,11 @@
   /* flex-direction: column; */
 }
 
+.tabla--sinWidth {
+  /* width: 50%; */
+  /* align-self: center; */
+}
+
 .tabla__header {
   background-color: #197364;
   color: #eeeeee;
@@ -24,4 +29,15 @@
 .tabla__celda--header {
   padding: 20px;
   font-size: 1.2rem;
+}
+
+.tabla__icon {
+  font-size: 1.8rem;
+  opacity: 0.8;
+}
+
+.tabla__container-color {
+  height: 30px;
+  width: 50px;
+  margin: auto auto;
 }

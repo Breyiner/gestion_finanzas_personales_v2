@@ -1,6 +1,6 @@
 .boton {
   border: none;
-  height: 40px;
+  min-height: 40px;
   min-width: 100px;
   font-size: 1.1rem;
   font-weight: bold;

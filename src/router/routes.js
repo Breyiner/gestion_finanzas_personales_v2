@@ -1,4 +1,8 @@
+import { categoriasController } from "../views/admin/categorias/categoriasController";
+import { ciudadesController } from "../views/admin/ciudades/ciudadesController";
+import { generosController } from "../views/admin/generos/generosController";
 import { inicioAdminController } from "../views/admin/inicio/inicioAdminController";
+import { tiposMovimientosController } from "../views/admin/tiposMovimientos/tiposMovimientosController";
 import { usuariosController } from "../views/admin/usuarios/usuariosController";
 import { loginController } from "../views/auth/login/loginController";
 import { registerController } from "../views/auth/register/registerController";
@@ -83,6 +87,34 @@ export const routes = {
           usuarios: {
                path: "admin/usuarios/index.html",
                controller: usuariosController,
+               private: true,
+               layout: true,
+               admin: true
+          },
+          ciudades: {
+               path: "admin/ciudades/index.html",
+               controller: ciudadesController,
+               private: true,
+               layout: true,
+               admin: true
+          },
+          generos: {
+               path: "admin/generos/index.html",
+               controller: generosController,
+               private: true,
+               layout: true,
+               admin: true
+          },
+          tiposMovimientos: {
+               path: "admin/tiposMovimientos/index.html",
+               controller: tiposMovimientosController,
+               private: true,
+               layout: true,
+               admin: true
+          },
+          categorias: {
+               path: "admin/categorias/index.html",
+               controller: categoriasController,
                private: true,
                layout: true,
                admin: true

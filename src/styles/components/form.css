@@ -60,6 +60,15 @@
   transition: 0.2s linear;
 }
 
+.form__input--color {
+  padding: 10px 10px;
+  height: 52px;
+}
+
+.form__input--color::-webkit-color-swatch {
+  /* margin: 12px; */
+}
+
 /* ========== FORM BUTTON ========== */
 .form__button {
   border: none;
