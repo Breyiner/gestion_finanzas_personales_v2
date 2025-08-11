@@ -1,6 +1,8 @@
 import { abrirModalNewGenero } from "../../../components/modales/generos/crearGenero";
 import { abrirModalEditGenero } from "../../../components/modales/generos/editarGenero";
-import { get } from "../../../helpers/api";
+import { confirmModal } from "../../../components/modales/modalConfirm";
+import { error, success } from "../../../helpers/alertas";
+import { delet, get } from "../../../helpers/api";
 import { cerrarModal } from "../../../helpers/modalManagement";
 
 export const generosController = async () => {
@@ -132,11 +134,32 @@ async function configEdit(boton) {
 
 }
 
+async function eliminar(boton) {
+    
+    let dataId = boton.dataset.genero_id;
+    
+
+    const confirmacion = await confirmModal("¿Está seguro de eliminar el género?");
+    if(confirmacion){
+        const respuesta = await delet(`generos/${dataId}`);
+        
+        if(!respuesta.success){
+            console.log(respuesta);
+            error(respuesta.message);
+            return
+        }
+        
+        await success(respuesta.message)
+        generosController();
+    }
+}
+
 
 document.addEventListener('click', async (e) => {
 
     if (e.target.closest('#nuevoGenero')) await abrirModalNewGenero();
-    if (e.target.closest('#editarGenero')) await configEdit(e.target.closest('#editarGenero'));
+  if (e.target.closest('#editarGenero')) await configEdit(e.target.closest('#editarGenero'));
+  if (e.target.closest('#eliminarGenero')) await eliminar(e.target.closest('#eliminarGenero'));
 
     if(e.target.closest('.modal-exit--generos')) cerrarModal();
 })

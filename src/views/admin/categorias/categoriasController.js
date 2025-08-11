@@ -1,6 +1,8 @@
 import { abrirModalNewCategoria } from "../../../components/modales/categorias/crearCategoria";
 import { abrirModalEditCategoria } from "../../../components/modales/categorias/editarCategoria";
-import { get } from "../../../helpers/api";
+import { confirmModal } from "../../../components/modales/modalConfirm";
+import { error, success } from "../../../helpers/alertas";
+import { delet, get } from "../../../helpers/api";
 import { cerrarModal } from "../../../helpers/modalManagement";
 
 export const categoriasController = async () => {
@@ -147,10 +149,32 @@ async function configEdit(boton) {
 
 }
 
+async function eliminar(boton) {
+    
+    let dataId = boton.dataset.categoria_id;
+    
+
+    const confirmacion = await confirmModal("¿Está seguro de eliminar la categoria?");
+    if(confirmacion){
+        const respuesta = await delet(`categorias/${dataId}`);
+        
+        if(!respuesta.success){
+            console.log(respuesta);
+            error(respuesta.message);
+            return
+        }
+        
+        await success(respuesta.message)
+        categoriasController();
+    }
+}
+
+
 document.addEventListener('click', async (e) => {
 
     if (e.target.closest('#nuevaCategoria')) await abrirModalNewCategoria();
     if (e.target.closest('#editarCategoria')) await configEdit(e.target.closest('#editarCategoria'));
+    if (e.target.closest('#eliminarCategoria')) await eliminar(e.target.closest('#eliminarCategoria'));
 
     if(e.target.closest('.modal-exit--categorias')) cerrarModal();
 })

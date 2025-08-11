@@ -1,6 +1,8 @@
+import { confirmModal } from "../../../components/modales/modalConfirm";
 import { abrirModalNewTipo } from "../../../components/modales/tiposMovimientos/crearTipo";
 import { abrirModalEditTipo } from "../../../components/modales/tiposMovimientos/editarTipo";
-import { get } from "../../../helpers/api";
+import { error, success } from "../../../helpers/alertas";
+import { delet, get } from "../../../helpers/api";
 import { cerrarModal } from "../../../helpers/modalManagement";
 
 export const tiposMovimientosController = async () => {
@@ -160,10 +162,32 @@ async function configEdit(boton) {
 
 }
 
+async function eliminar(boton) {
+    
+    let dataId = boton.dataset.tipo_movimiento_id;
+    
+
+    const confirmacion = await confirmModal("¿Está seguro de eliminar el tipo de movimiento?");
+    if(confirmacion){
+        const respuesta = await delet(`tiposMovimiento/${dataId}`);
+        
+        if(!respuesta.success){
+            console.log(respuesta);
+            error(respuesta.message);
+            return
+        }
+        
+        await success(respuesta.message)
+        tiposMovimientosController();
+    }
+}
+
+
 document.addEventListener('click', async (e) => {
 
     if (e.target.closest('#nuevoTipo')) await abrirModalNewTipo();
     if (e.target.closest('#editarTipo')) await configEdit(e.target.closest('#editarTipo'));
+  if (e.target.closest('#eliminarTipo')) await eliminar(e.target.closest('#eliminarTipo'));
 
     if(e.target.closest('.modal-exit--tipos')) cerrarModal();
 })

@@ -61,7 +61,7 @@ export const delet = async (endpoint) => {
         headers: {
             'Content-Type': 'application/json'
         }
-    });
+  });
 
     return await data.json();
 }

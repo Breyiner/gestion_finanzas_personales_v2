@@ -1,6 +1,8 @@
 import { abrirModalNewCiudad } from "../../../components/modales/ciudades/crearCiudad";
 import { abrirModalEditCiudad } from "../../../components/modales/ciudades/editarCiudad";
-import { get } from "../../../helpers/api"
+import { confirmModal } from "../../../components/modales/modalConfirm";
+import { error, success } from "../../../helpers/alertas";
+import { delet, get } from "../../../helpers/api"
 import { cerrarModal } from "../../../helpers/modalManagement";
 
 export const ciudadesController = async () => {
@@ -132,12 +134,32 @@ async function configEdit(boton) {
 
 }
 
+async function eliminar(boton) {
+    
+    let dataId = boton.dataset.ciudad_id;
+    
+
+    const confirmacion = await confirmModal("¿Está seguro de eliminar la ciudad?");
+    if(confirmacion){
+        const respuesta = await delet(`ciudades/${dataId}`);
+        
+        if(!respuesta.success){
+            console.log(respuesta);
+            error(respuesta.message);
+            return
+        }
+        
+        await success(respuesta.message)
+        ciudadesController();
+    }
+}
 
 
 document.addEventListener('click', async (e) => {
 
     if (e.target.closest('#nuevaCiudad')) await abrirModalNewCiudad();
     if (e.target.closest('#editarCiudad')) await configEdit(e.target.closest('#editarCiudad'));
+  if (e.target.closest('#eliminarCiudad')) await eliminar(e.target.closest('#eliminarCiudad'));
 
     if(e.target.closest('.modal-exit--ciudades')) cerrarModal();
 })
