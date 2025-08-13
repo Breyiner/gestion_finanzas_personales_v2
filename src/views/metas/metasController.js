@@ -78,7 +78,7 @@ async function cargarMetas(container, data) {
         const metaPorcentaje = document.createElement('span');
         metaPorcentaje.classList.add('meta__porcentaje');
         let porcentaje = Math.round((total*100)/monto);
-        metaPorcentaje.textContent = `${ isNaN(porcentaje) ? 0 : porcentaje }%`;
+        metaPorcentaje.textContent = `${ isNaN(porcentaje) ? 0 : porcentaje > 100 ? 100 : porcentaje }%`;
 
         const progessBar = document.createElement('progress');
         progessBar.classList.add('meta__progreso');
