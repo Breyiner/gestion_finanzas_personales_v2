@@ -54,3 +54,7 @@
 .boton--none-bg {
   background-color: transparent;
 }
+
+.boton--auto-heigth {
+  min-height: auto;
+}

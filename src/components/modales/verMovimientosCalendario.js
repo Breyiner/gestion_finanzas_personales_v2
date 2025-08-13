@@ -53,7 +53,7 @@ function crearBotonNuevo(container, fecha) {
     btnNuevoMovimiento.setAttribute('type', 'button');
     btnNuevoMovimiento.setAttribute('id', 'nuevoMovimientoCalendario');
     btnNuevoMovimiento.setAttribute('data-fecha', fecha);
-    btnNuevoMovimiento.classList.add('boton', 'boton-txt-mainColor', 'boton--grande', 'boton--borde-mainColor', 'boton--none-bg');
+    btnNuevoMovimiento.classList.add('boton', 'boton-txt-mainColor', 'boton--grande', 'boton--borde-mainColor', 'boton--none-bg', 'boton--auto-heigth');
     btnNuevoMovimiento.textContent = "Registrar Movimiento";
 
     container.append(btnNuevoMovimiento);
