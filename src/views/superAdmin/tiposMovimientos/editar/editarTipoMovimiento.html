@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h2 class="modal-header__title">Editar Tipo de Movimiento</h2>
+    <div class="modal-exit modal-exit--tiposMovimientos">
+        <i class="ri-close-fill modal-exit__icon"></i>
+    </div>
+</div>
+<div class="modal-body">
+    <form class="form form--modal" id="form-editarTipoMovimiento" novalidate autocomplete="off">
+        <div class="form__row">
+            <div class="form__field">
+                <label class="form__label">Nombre:</label>
+                <input type="text" class="form__input" name="name" required id="nombreTipoMovimiento">
+            </div>
+        </div>
+        <div class="form__row">
+            <div class="form__field">
+                <label class="form__label">Color:</label>
+                <select name="color_id" id="colorTipoMovimiento" class="form__input" required>
+                    <option value="">Seleccione un color</option>
+                </select>
+            </div>
+            <div class="form__field">
+                <label class="form__label">Icono:</label>
+                <select name="icon_id" id="iconTipoMovimiento" class="form__input" required>
+                    <option value="">Seleccione un icono</option>
+                </select>
+            </div>
+        </div>
+        <div class="form__buttons">
+            <button class="boton boton--verde" id="btnCrearTipoMovimiento" type="submit">Actualizar</button>
+        </div>
+    </form>
+</div>

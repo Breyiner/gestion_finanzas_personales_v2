@@ -3,5 +3,5 @@ export const addClass = (elemento, classElemento) => {
 }
 
 export const deleteClass = (elemento, classElemento) => {
-    elemento.classList.remove(classElemento);
+    if (elemento.classList.contains(classElemento)) elemento.classList.remove(classElemento);
 }

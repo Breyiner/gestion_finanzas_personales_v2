@@ -38,3 +38,21 @@ export const confirm = (message) => {
         }
     })
 }
+
+export const loading = (message = 'Cerrando sesión...') => {
+    return Swal.fire({
+        title: message,
+        html: '<div class="spinner-border text-primary" role="status"><span class="sr-only">Cargando...</span></div>',
+        showConfirmButton: false,
+        showCancelButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        didOpen: () => {
+            Swal.showLoading();
+        },
+        customClass: {
+            container: 'swal-over-modal'
+        }
+    });
+}

@@ -129,8 +129,8 @@ async function guardarMovimiento(data) {
       
     if(!movimientoCreado.success) {
 
-        if(movimientoCreado.data)  {
-           await errorModal(movimientoCreado.data[0]);
+        if(movimientoCreado.errors)  {
+           await errorModal(movimientoCreado.errors[0]);
             return;
         }
            await errorModal(movimientoCreado.message);

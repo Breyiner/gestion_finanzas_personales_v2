@@ -106,9 +106,9 @@
 .profile-menu__logout {
   display: flex;
   align-items: center;
-  text-decoration: none;
   color: #fff;
   margin: 12px 0;
+  cursor: pointer;
 }
 
 .profile-menu__icon-container {

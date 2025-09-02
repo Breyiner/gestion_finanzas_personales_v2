@@ -1,39 +1,62 @@
 import { error, success } from "../../helpers/alertas";
 import { get, patch } from "../../helpers/api"
+import { isAuthorize } from "../../helpers/auth";
 import { datos, validarCampo, validarCampos, validarCorreo, validarMaximo, validarPassword, validarTexto } from "../../helpers/validaciones";
 
 let usuario_id = null;
 
-export const perfilController = async () => {
+export const perfilController = async (parametros = null) => {
     
-    usuario_id = parseInt(localStorage.getItem('usuario_id'));
-
+    usuario_id = parseInt(localStorage.getItem('user_id'));
+    
     await configurarFormulario();
 }
 
 async function configurarFormulario() {
 
-    await llenarCiudades();
-    await llenarGeneros();
-
-    const formulario = document.querySelector('#form-profile');
-    let {data} = await get(`usuarios/${usuario_id}`);
-
-    console.log(data);
+    if(isAuthorize('cities.index')) await llenarCiudades();
+    if(isAuthorize('genders.index')) await llenarGeneros();
     
-    llenarFormulario(formulario, data);
-    configurarValidaciones()
+    if(isAuthorize('profiles.show-own')) 
+    {
+        const formulario = document.querySelector('#form-profile');
+
+        const {data} = await get('profiles/me');
+        
+        llenarFormulario(formulario, data);
+
+    }
+
+    if(isAuthorize('users.show-own')) 
+    {
+
+        const formulario = document.querySelector('#form-edit-email');
+
+        const {data} = await get('users/me');
+        
+        llenarFormulario(formulario, data);
+    }
+
+    const updateProfile = document.querySelector("#btnEditPerfil");
+    const updateCorreo = document.querySelector("#btnEditCorreo");
+    const updatePassword = document.querySelector("#btnEditPass");
+
+    if(!isAuthorize('profiles.update-own')) updateProfile.remove();
+    if(!isAuthorize('users.update-own-email')) updateCorreo.remove();
+    if(!isAuthorize('users.update-own-password')) updatePassword.remove();
+    
+    configurarValidaciones();
 }
 
 async function llenarCiudades() {
 
-    let {data} = await get('ciudades');
+    let {data} = await get('cities');
     let selectCiudades = document.querySelector('#ciudad');
 
     selectCiudades.innerHTML = '<option value="">Seleccione...</option>';
-    data.forEach(({id, nombre}) => {
+    data.forEach(({id, name}) => {
        
-        selectCiudades.innerHTML += `<option value="${id}">${nombre}</option>`;
+        selectCiudades.innerHTML += `<option value="${id}">${name}</option>`;
         
     });
 
@@ -41,13 +64,13 @@ async function llenarCiudades() {
 
 async function llenarGeneros() {
 
-    let {data} = await get('generos');
+    let {data} = await get('genders');
     let selectGeneros = document.querySelector('#genero');
 
     selectGeneros.innerHTML = '<option value="">Seleccione...</option>';
-    data.forEach(({id, nombre}) => {
+    data.forEach(({id, name}) => {
        
-        selectGeneros.innerHTML += `<option value="${id}">${nombre}</option>`;
+        selectGeneros.innerHTML += `<option value="${id}">${name}</option>`;
         
     });
 }
@@ -71,6 +94,7 @@ function configurarValidaciones() {
     let ciudades = document.querySelector('#ciudad');
     let generos = document.querySelector('#genero');
     let correo = document.querySelector("#correo");
+    let correoConfirm = document.querySelector("#correo_confirm");
 
     let oldPass = document.querySelector('#old_pass');
     let newPass = document.querySelector('#new_pass');
@@ -87,6 +111,10 @@ function configurarValidaciones() {
     })
 
     correo.addEventListener('keydown', (e) => {
+        validarMaximo(e, 30);
+    })
+
+    correoConfirm.addEventListener('keydown', (e) => {
         validarMaximo(e, 30);
     })
     
@@ -113,6 +141,11 @@ function configurarValidaciones() {
         validarCorreo(e);
     });
 
+    correoConfirm.addEventListener('blur', (e) => {
+        validarCampo(e);
+        validarCorreo(e);
+    });
+
     // oldPass.addEventListener('keydown', (e) => validarPassword(e));
     oldPass.addEventListener('input', (e) => validarPassword(e));
     newPass.addEventListener('input', (e) => validarPassword(e));
@@ -121,17 +154,17 @@ function configurarValidaciones() {
 
 }
 
-async function validarSubmitUsuario(e) {
+async function validarSubmitPerfil(e) {
 
     if(validarCampos(e)) {
         console.log('Datos a enviar:', datos);
             
-        let botonEditar = document.querySelector(('#btnEditUser'));
+        let botonEditar = document.querySelector(('#btnEditPerfil'));
         let textoOriginal = botonEditar.textContent;
         botonEditar.disabled = true;
         botonEditar.textContent = "cargando...";
 
-        const response = await patch(datos, `usuarios/${usuario_id}`);
+        const response = await patch(datos, `profiles/me`);
 
         botonEditar.textContent = textoOriginal;
         botonEditar.disabled = false;
@@ -147,8 +180,8 @@ async function validarSubmitUsuario(e) {
     
         } else {
             
-            if(response.data)  {
-                error(response.data[0]);
+            if(response.errors.length > 0)  {
+                error(response.errors[0]);
                 return;
             }
             
@@ -164,6 +197,37 @@ async function validarSubmitUsuario(e) {
 
 }
 
+async function validarSubmitCorreo(e) {
+
+    if(validarCampos(e)) {
+        console.log('Datos a enviar:', datos);
+            
+        let botonEditar = document.querySelector(('#btnEditCorreo'));
+        let textoOriginal = botonEditar.textContent;
+        botonEditar.disabled = true;
+        botonEditar.textContent = "cargando...";
+
+        const response = await patch(datos, `users/me/email`);
+
+        botonEditar.textContent = textoOriginal;
+        botonEditar.disabled = false;
+
+        if (response.success) {
+
+            let confirmacion = await success(response.message);
+            e.target.reset(); 
+            
+            if(confirmacion.isConfirmed) await perfilController();
+
+        } else error(response.message);
+    }
+
+    else {
+    error('Debe llenar los campos correctamente');
+    }
+
+}
+
 async function validarSubmitPassword(e) {
 
     if(validarCampos(e)) {
@@ -174,7 +238,7 @@ async function validarSubmitPassword(e) {
         botonEditar.disabled = true;
         botonEditar.textContent = "cargando solicitud...";
 
-        const response = await patch(datos, `usuarios/password/usuario/${usuario_id}`);
+        const response = await patch(datos, `users/me/password`);
 
         botonEditar.textContent = textoOriginal;
         botonEditar.disabled = false;
@@ -186,13 +250,9 @@ async function validarSubmitPassword(e) {
             
             if(confirmacion.isConfirmed) await perfilController();
     
-        } else {
-            
-            error(response.message);
-    
-        }
+        } else error(response.message);
         
-  }
+    }
     else {
       error('Debe llenar los campos correctamente');
     }
@@ -202,6 +262,7 @@ async function validarSubmitPassword(e) {
 document.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    if(e.target.closest('#form-profile')) await validarSubmitUsuario(e);
-    if(e.target.closest('#form-edit-pswd')) await validarSubmitPassword(e);
+    if(e.target.closest('#form-profile') && isAuthorize('profiles.update-own')) await validarSubmitPerfil(e);
+    if(e.target.closest('#form-edit-email') && isAuthorize('users.update-own-email')) await validarSubmitCorreo(e);
+    if(e.target.closest('#form-edit-pswd') && isAuthorize('users.update-own-password')) await validarSubmitPassword(e);
 })

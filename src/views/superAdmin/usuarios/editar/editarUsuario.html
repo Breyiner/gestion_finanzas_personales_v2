@@ -1,0 +1,69 @@
+<div class="modal-header">
+  <h2 class="modal-header__title">Editar Usuario</h2>
+  <div class="modal-exit modal-exit--usuario">
+    <i class="ri-close-fill modal-exit__icon"></i>
+  </div>
+</div>
+
+<div class="modal-body">
+  <form class="form form--modal" id="form-editPerfil" autocomplete="off" novalidate>
+    <div class="form__row">
+      <div class="form__field">
+        <label class="form__label">Nombre:</label>
+        <input type="text" class="form__input" name="first_name" required id="nombre">
+      </div>
+      <div class="form__field">
+        <label class="form__label">Apellido:</label>
+        <input type="text" class="form__input" name="last_name" required id="apellido">
+      </div>
+    </div>
+    
+    <div class="form__row">
+      <div class="form__field form__field--selector">
+        <label class="form__label">Género:</label>
+        <select class="form__input" name="gender_id" required id="genero">
+        </select>
+      </div>
+      <div class="form__field form__field--selector">
+        <label class="form__label">Ciudad:</label>
+        <select class="form__input selector" required name="city_id" id="ciudad">
+        </select>
+      </div>
+    </div>
+
+    <div class="form__buttons">
+      <button class="boton boton--azul" id="editarPerfil">Actualizar Perfil</button>
+    </div>
+  </form>
+
+  <form class="form form--modal" id="form-editUser" autocomplete="off" novalidate>
+    
+    <div class="form__row">
+      <div class="form__field">
+        <label class="form__label">Correo:</label>
+        <input type="text" class="form__input" name="email" id="correo" required>
+      </div>
+      <div class="form__field">
+        <label class="form__label">Contraseña:</label>
+        <input type="password" class="form__input" name="password" id="contrasena">
+      </div>
+    </div>
+
+    <div class="form__row">
+      <div class="form__field form__field--selector">
+        <label class="form__label">Rol:</label>
+        <select class="form__input" name="role_id" required id="rol">
+        </select>
+      </div>
+      <div class="form__field form__field--selector">
+        <label class="form__label">Estado:</label>
+        <select class="form__input selector" required name="status_id" id="estado">
+        </select>
+      </div>
+    </div>
+
+    <div class="form__buttons">
+      <button class="boton boton--azul" id="editarUser">Actualizar Datos</button>
+    </div>
+  </form>
+</div>

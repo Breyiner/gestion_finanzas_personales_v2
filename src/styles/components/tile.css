@@ -22,6 +22,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
+  width: 80%;
 }
 
 .tile__icon-box {
@@ -31,6 +32,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #eeeeeec5;
 }
 
 .tile__icon {
@@ -74,11 +76,15 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
+  width: 100%;
 }
 
 .tile__title {
   font-size: 1.3rem;
+  white-space: nowrap;
+  overflow: hidden;
   font-weight: 600;
+  text-overflow: ellipsis;
   color: #212529;
 }
 

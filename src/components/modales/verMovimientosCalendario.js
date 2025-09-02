@@ -1,7 +1,7 @@
 // userModal.js
 import { get } from '../../helpers/api';
 import { cerrarModal, mostrarModal } from '../../helpers/modalManagement';
-import htmlContent from  './verMovimientos.html?raw';
+import htmlContent from  './../../views/home/movimientos/verMovimientos.html?raw';
 import { formatter } from '../../helpers/formateadorPrecio.js';
 
 let usuario_id = null;

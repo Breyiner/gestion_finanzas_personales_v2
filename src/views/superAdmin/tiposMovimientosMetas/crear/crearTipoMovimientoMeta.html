@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h2 class="modal-header__title">Crear Tipo de Movimiento Meta</h2>
+    <div class="modal-exit modal-exit--tiposMovimientosMeta">
+        <i class="ri-close-fill modal-exit__icon"></i>
+    </div>
+</div>
+
+<div class="modal-body">
+    <form class="form form--modal" id="form-crearTipoMovimientoMeta" novalidate autocomplete="off">
+        <div class="form__row">
+            <div class="form__field">
+                <label class="form__label">Nombre:</label>
+                <input type="text" class="form__input" name="name" required id="nombreTipoMovimientoMeta">
+            </div>
+        </div>
+        <div class="form__row">
+            <div class="form__field">
+                <label class="form__label">Color:</label>
+                <select class="form__input" name="color_id" id="colorTipoMovimientoMeta" required>
+                    <option value="">Seleccione un color</option>
+                </select>
+            </div>
+            <div class="form__field">
+                <label class="form__label">Icono:</label>
+                <select class="form__input" name="icon_id" id="iconTipoMovimientoMeta" required>
+                    <option value="">Seleccione un icono</option>
+                </select>
+            </div>
+        </div>
+        <div class="form__buttons">
+            <button type="submit" class="boton boton--verde" id="btnCrearTipoMovimientoMeta">Crear</button>
+        </div>
+    </form>
+</div>

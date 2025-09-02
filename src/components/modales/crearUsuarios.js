@@ -54,48 +54,48 @@ async function llenarGeneros() {
 
 function gestionarValidaciones() {
 
-    let nombre = document.querySelector("#nombre");
-    let apellido = document.querySelector("#apellido");
-    let ciudades = document.querySelector('#ciudad');
-    let generos = document.querySelector('#genero');
-    let correo = document.querySelector("#correo");
-    let contrasena = document.querySelector("#contrasena");
+    // let nombre = document.querySelector("#nombre");
+    // let apellido = document.querySelector("#apellido");
+    // let ciudades = document.querySelector('#ciudad');
+    // let generos = document.querySelector('#genero');
+    // let correo = document.querySelector("#correo");
+    // let contrasena = document.querySelector("#contrasena");
     
-    nombre.addEventListener('keydown', (e) => {
-        validarTexto(e);
-        validarMaximo(e, 30);
-    })
+    // nombre.addEventListener('keydown', (e) => {
+    //     validarTexto(e);
+    //     validarMaximo(e, 30);
+    // })
     
-    apellido.addEventListener('keydown', (e) => {
-        validarTexto(e);
-        validarMaximo(e, 30);
-    })
+    // apellido.addEventListener('keydown', (e) => {
+    //     validarTexto(e);
+    //     validarMaximo(e, 30);
+    // })
 
-    correo.addEventListener('keydown', (e) => {
-        validarMaximo(e, 30);
-    })
+    // correo.addEventListener('keydown', (e) => {
+    //     validarMaximo(e, 30);
+    // })
 
-    contrasena.addEventListener('keydown', (e) => {
-        validarMaximo(e, 20);
-    })
+    // contrasena.addEventListener('keydown', (e) => {
+    //     validarMaximo(e, 20);
+    // })
 
-    nombre.addEventListener('blur', (e) => validarCampo(e));
+    // nombre.addEventListener('blur', (e) => validarCampo(e));
     
-    apellido.addEventListener('blur', (e) => validarCampo(e));
+    // apellido.addEventListener('blur', (e) => validarCampo(e));
 
-    ciudades.addEventListener('blur', (e) => validarCampo(e));
+    // ciudades.addEventListener('blur', (e) => validarCampo(e));
     
-    generos.addEventListener('blur', (e) => validarCampo(e));
+    // generos.addEventListener('blur', (e) => validarCampo(e));
 
-    correo.addEventListener('blur', (e) => {
-        validarCampo(e);
-        validarCorreo(e);
-    });
+    // correo.addEventListener('blur', (e) => {
+    //     validarCampo(e);
+    //     validarCorreo(e);
+    // });
 
-    contrasena.addEventListener('blur', (e) => {
-        validarCampo(e);
-        validarPassword(e);
-    });
+    // contrasena.addEventListener('blur', (e) => {
+    //     validarCampo(e);
+    //     validarPassword(e);
+    // });
 }
 
 async function validarSubmit(e) {
@@ -120,8 +120,8 @@ async function validarSubmit(e) {
             if((await confirmacion).isConfirmed) funcControlador();
         }
         else {
-            if(response.data)  {
-                await errorModal(response.data[0]);
+            if(response.errors.length > 0)  {
+                await errorModal(response.errors[0]);
                 return;
             }
                 await errorModal(response.message);
@@ -129,10 +129,3 @@ async function validarSubmit(e) {
     }
 
 }
-
-document.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    if(e.target.classList.contains('form-newUser')) await validarSubmit(e);
-    
-})

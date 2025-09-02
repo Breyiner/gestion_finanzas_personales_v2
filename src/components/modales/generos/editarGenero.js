@@ -64,8 +64,8 @@ async function validarSubmit(e) {
             if((await confirmacion).isConfirmed) generosController();
         }
         else {
-            if(response.data)  {
-                await errorModal(response.data[0]);
+            if(response.errors.length > 0)  {
+                await errorModal(response.errors[0]);
                 return;
             }
                 await errorModal(response.message);

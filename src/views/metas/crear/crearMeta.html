@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <h2 class="modal-header__title">Crear Meta</h2>
+  <div class="modal-exit modal-exit--metas">
+    <i class="ri-close-fill modal-exit__icon"></i>
+  </div>
+</div>
+
+<div class="modal-body">
+  <form class="form form--modal" id="form-nuevaMeta" novalidate autocomplete="off">
+    <div class="form__row">
+      <div class="form__field">
+        <label class="form__label">Nombre:</label>
+        <input type="text" class="form__input" name="name" required id="nombreMeta">
+      </div>
+    </div>
+    
+    <div class="form__row">
+      <div class="form__field">
+        <label class="form__label">Monto objetivo:</label>
+        <input type="text" class="form__input" name="target_amount" required id="montoMeta">
+      </div>
+      <div class="form__field">
+        <label class="form__label">Fecha Límite(opcional):</label>
+        <input type="date" class="form__input" name="due_date">
+      </div>
+    </div>
+
+    <div class="form__row">
+      <div class="form__field">
+        <label class="form__label">Descripción:</label>
+        <textarea rows="4" class="form__input form__input--textarea" name="description" id="descripcionMeta"></textarea>
+      </div>
+    </div>
+
+    <div class="form__buttons">
+      <button class="boton boton--verde" id="btnCrearMeta" type="submit">Crear</button>
+    </div>
+  </form>
+</div>

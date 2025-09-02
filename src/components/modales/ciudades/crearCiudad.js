@@ -2,7 +2,7 @@ import { success } from '../../../helpers/alertas';
 import { post } from '../../../helpers/api';
 import { cerrarTodos, mostrarModal } from '../../../helpers/modalManagement';
 import { datos, validarCampo, validarCampos, validarMaximo, validarTexto } from '../../../helpers/validaciones';
-import { ciudadesController } from '../../../views/admin/ciudades/ciudadesController';
+import { ciudadesController } from '../../../views/superAdmin/ciudades/ciudadesController';
 import { errorModal } from '../modalError';
 import htmlContent from './crearCiudad.html?raw';
 
@@ -51,8 +51,8 @@ async function validarSubmit(e) {
             if((await confirmacion).isConfirmed) ciudadesController();
         }
         else {
-            if(response.data)  {
-                await errorModal(response.data[0]);
+            if(response.errors.length > 0)  {
+                await errorModal(response.errors[0]);
                 return;
             }
                 await errorModal(response.message);

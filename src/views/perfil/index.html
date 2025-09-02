@@ -16,40 +16,55 @@
                 <div class="form__row">
                     <div class="form__field">
                         <label class="form__label" for="nombre">Nombre:</label>
-                        <input type="text" name="nombre" id="nombre" class="form__input" required>
+                        <input type="text" name="first_name" id="nombre" class="form__input" required>
                     </div>
                     
                     <div class="form__field">
                         <label class="form__label" for="apellido">Apellido:</label>
-                        <input type="text" name="apellido" id="apellido" class="form__input" required>
+                        <input type="text" name="last_name" id="apellido" class="form__input" required>
                     </div>
                 </div>
 
                 <div class="form__row">
                     <div class="form__field form__field--selector">
                         <label class="form__label" for="genero">Género:</label>
-                        <select name="genero_id" id="genero" class="form__input selector" required>
+                        <select name="gender_id" id="genero" class="form__input selector" required>
                         </select>
                         <i class="ri-arrow-down-s-line selector__icon"></i>
                     </div>
 
                     <div class="form__field form__field--selector">
                         <label class="form__label" for="ciudad">Ciudad:</label>
-                        <select name="ciudad_id" id="ciudad" class="form__input selector" required>
+                        <select name="city_id" id="ciudad" class="form__input selector" required>
                         </select>
                         <i class="ri-arrow-down-s-line selector__icon"></i>
                     </div>
                 </div>
 
+                <button type="submit" class="form__button form__button--profile" id="btnEditPerfil">Actualizar datos</button>
+            </form>
+        </div>
+
+        <div class="info-user-card">
+            <div class="info-user-card__header">
+                <h2 class="info-user-card__title">Actualiza Información Sensible</h2>
+                <p class="info-user-card__text">En este espacio podrás actualizar tu correo electrónico</p>
+            </div>
+
+            <form autocomplete="off" action="#" novalidate class="form form--profile" id="form-edit-email">
                 <div class="form__row">
                     <div class="form__field">
                         <label class="form__label" for="correo">Correo:</label>
-                        <input type="email" name="correo" id="correo" class="form__input" required>
+                        <input type="email" name="email" id="correo" class="form__input" required>
                     </div>
-                    <div class="form__field"></div>
+
+                    <div class="form__field">
+                        <label class="form__label" for="correo">Confirmar Correo:</label>
+                        <input type="email" name="email_confirmation" id="correo_confirm" class="form__input" required>
+                    </div>
                 </div>
 
-                <button type="submit" class="form__button form__button--profile" id="btnEditUser">Actualizar datos</button>
+                <button type="submit" class="form__button form__button--profile" id="btnEditCorreo">Actualizar Correo</button>
             </form>
         </div>
 
@@ -62,18 +77,18 @@
             <form autocomplete="off" action="#" novalidate class="form form--profile" id="form-edit-pswd">
                 <div class="form__row">
                     <div class="form__field">
-                        <label class="form__label" for="old_pass">Actual contraseña:</label>
-                        <input type="password" name="old_password" id="old_pass" class="form__input" required>
+                        <label class="form__label" for="old_pass">Contraseña Actual:</label>
+                        <input type="password" name="current_password" id="old_pass" class="form__input" required>
                     </div>
 
                     <div class="form__field">
-                        <label class="form__label" for="new_pass">Nueva contraseña:</label>
-                        <input type="password" name="new_password" id="new_pass" class="form__input" required>
+                        <label class="form__label" for="new_pass">Cntraseña Nueva:</label>
+                        <input type="password" name="password" id="new_pass" class="form__input" required>
                     </div>
 
                     <div class="form__field">
-                        <label class="form__label" for="confirm_pass">Confirmar nueva contraseña:</label>
-                        <input type="password" name="confirm_password" id="confirm_pass" class="form__input" required>
+                        <label class="form__label" for="confirm_pass">Confirmar Contraseña Nueva:</label>
+                        <input type="password" name="password_confirmation" id="confirm_pass" class="form__input" required>
                     </div>
                 </div>
 

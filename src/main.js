@@ -13,7 +13,3 @@ window.addEventListener('DOMContentLoaded', async () => {
 window.addEventListener('hashchange', async () => {
   router(layout, header, sidebar, app)
 })
-
-window.onpopstate = function() {
-  history.pushState(null, null, location.href);
-};

@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h2 class="modal-header__title">Crear Permiso</h2>
+    <div class="modal-exit modal-exit--permissions">
+        <i class="ri-close-fill modal-exit__icon"></i>
+    </div>
+</div>
+<div class="modal-body">
+    <form class="form form--modal" id="form-crearPermission" novalidate autocomplete="off">
+        <div class="form__row">
+            <div class="form__field">
+                <label class="form__label">Nombre:</label>
+                <input type="text" class="form__input" name="name" required id="nombrePermission">
+            </div>
+        </div>
+        <div class="form__row">
+            <div class="form__field">
+                <label class="form__label">Descripción:</label>
+                <textarea rows="4" class="form__input form__input--textarea" name="description" id="descripcionPermission"></textarea>
+            </div>
+        </div>
+        <div class="form__buttons">
+            <button class="boton boton--verde" id="btnCrearPermission" type="submit">Crear</button>
+        </div>
+    </form>
+</div>

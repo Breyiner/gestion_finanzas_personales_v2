@@ -1,0 +1,41 @@
+<div class="modal-header">
+  <h2 class="modal-header__title">Registrar Movimiento</h2>
+  <div class="modal-exit modal-exit--inicio">
+    <i class="ri-close-fill modal-exit__icon"></i>
+  </div>
+</div>
+
+<div class="modal-body">
+  <form class="form form--modal" id="form-nuevoMovimiento" novalidate autocomplete="off">
+    <div class="form__row">
+      <div class="form__field">
+        <label class="form__label">Monto:</label>
+        <input type="text" class="form__input" id="montoMovimiento" name="amount" required>
+      </div>
+    </div>
+    
+    <div class="form__row">
+      <div class="form__field form__field--selector">
+        <label class="form__label">Tipo de movimiento:</label>
+        <select class="form__input" id="tiposMovimiento" name="transaction_type_id" required disabled>
+        </select>
+      </div>
+      <div class="form__field form__field--selector">
+        <label class="form__label">Categoría:</label>
+        <select class="form__input" id="categoriasMovimiento" name="transaction_category_id" required>
+        </select>
+      </div>
+    </div>
+
+    <div class="form__row">
+      <div class="form__field">
+        <label class="form__label">Descripción:</label>
+        <textarea rows="4" class="form__input form__input--textarea" required id="descripcionMovimiento" name="description"></textarea>
+      </div>
+    </div>
+
+    <div class="form__buttons">
+      <button class="boton boton--verde" id="btnCrearMovimiento">Registrar</button>
+    </div>
+  </form>
+</div>

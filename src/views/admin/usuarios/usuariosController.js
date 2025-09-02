@@ -1,23 +1,29 @@
-import { abrirModalNewUser } from '../../../components/modales/crearUsuarios';
-import { abrirModalEditUser } from '../../../components/modales/editarUsuario';
-import { confirmModal } from '../../../components/modales/modalConfirm';
-import { error, success } from '../../../helpers/alertas';
+import { confirm, error, success } from '../../../helpers/alertas';
 import { delet, get } from '../../../helpers/api';
+import { isAuthorize } from '../../../helpers/auth';
 import { cerrarModal, mostrarModal } from '../../../helpers/modalManagement';
 
 let user_id = null;
 
 export const usuariosController = async () => {
 
-  user_id = localStorage.getItem('usuario_id');
+    user_id = localStorage.getItem('user_id');
+  
     
     let containerTable = document.querySelector('.container-table');
-    let {data} = await get('usuarios/tabla');
-    console.log(data);
     
-    containerTable.innerHTML = "";
-    createBtnNew(containerTable);
-    crearTabla(containerTable, data);
+    
+    if(isAuthorize('users.index')) {
+        let {data} = await get('users/information');
+        
+        console.log(data);
+        
+        containerTable.innerHTML = "";
+
+        if(isAuthorize('users.store')) createBtnNew(containerTable);
+        
+        crearTabla(containerTable, data);
+    }
 }
 
 function createBtnNew(container) {
@@ -52,7 +58,6 @@ function crearTabla(container, data) {
     const cellNombre = document.createElement('th');
     const cellApellido = document.createElement('th');
     const cellCorreo = document.createElement('th');
-    const cellContrasena = document.createElement('th');
     const cellGenero = document.createElement('th');
     const cellCiudad = document.createElement('th');
     const cellEstado = document.createElement('th');
@@ -67,7 +72,6 @@ function crearTabla(container, data) {
     cellNombre.classList.add('tabla__celda', 'tabla__celda--header');
     cellApellido.classList.add('tabla__celda', 'tabla__celda--header');
     cellCorreo.classList.add('tabla__celda', 'tabla__celda--header');
-    cellContrasena.classList.add('tabla__celda', 'tabla__celda--header');
     cellGenero.classList.add('tabla__celda', 'tabla__celda--header');
     cellCiudad.classList.add('tabla__celda', 'tabla__celda--header');
     cellEstado.classList.add('tabla__celda', 'tabla__celda--header');
@@ -80,7 +84,6 @@ function crearTabla(container, data) {
     cellNombre.textContent = 'Nombre';
     cellApellido.textContent = 'Apellido';
     cellCorreo.textContent = 'Correo';
-    cellContrasena.textContent = 'Contrasena';
     cellGenero.textContent = 'Género';
     cellCiudad.textContent = 'Ciudad';
     cellEstado.textContent = 'Estado';
@@ -89,8 +92,11 @@ function crearTabla(container, data) {
 
     const tableBody = document.createElement('tbody');
 
-    data.forEach(({id, rol, nombre, apellido, correo, genero, ciudad, estado}) => {
+    data.forEach(({id, role, first_name, last_name, email, gender, city, status}) => {
         
+        if(role == "Super Administrador" || role =="Administrador" || id == user_id) return;
+
+
         // Crear cuerpo de la tabla
         const rowBody = document.createElement('tr');
         const cellIdBody = document.createElement('td');
@@ -122,14 +128,13 @@ function crearTabla(container, data) {
     
         //contenido celdas cuerpo
         cellIdBody.textContent = id;
-        cellRoleBody.textContent = rol;
-        cellNameBody.textContent = nombre;
-        cellLstNameBody.textContent = apellido;
-        cellEmailBody.textContent = correo;
-        cellPswdBody.textContent = '******';
-        cellGenderBody.textContent = genero;
-        cellCityBody.textContent = ciudad;
-        cellEstateBody.textContent = estado;
+        cellRoleBody.textContent = role;
+        cellNameBody.textContent = first_name;
+        cellLstNameBody.textContent = last_name;
+        cellEmailBody.textContent = email;
+        cellGenderBody.textContent = gender;
+        cellCityBody.textContent = city;
+        cellEstateBody.textContent = status;
     
         // crear botones
         const btnEditar = document.createElement('button');
@@ -144,13 +149,7 @@ function crearTabla(container, data) {
         btnEliminar.setAttribute('id', 'eliminarUsuario');
         btnEliminar.setAttribute('data-userId', id);
 
-        if(user_id == id) {
-            
-            btnEditar.disabled = true;
-            btnEditar.classList.remove('boton--azul');
-        }
-
-        if(user_id == id || estado == "Inactivo") {
+        if(status == "Inactivo") {
             btnEliminar.disabled = true;
             btnEliminar.classList.remove('boton--rojo');
         }
@@ -162,12 +161,18 @@ function crearTabla(container, data) {
         cellEditBody.append(btnEditar);
         cellDeleteBody.append(btnEliminar);
         
-        rowBody.append(cellIdBody, cellRoleBody, cellNameBody, cellLstNameBody, cellEmailBody, cellPswdBody, cellGenderBody, cellCityBody, cellEstateBody, cellEditBody, cellDeleteBody);
+        rowBody.append(cellIdBody, cellRoleBody, cellNameBody, cellLstNameBody, cellEmailBody, cellGenderBody, cellCityBody, cellEstateBody);
+
+        if(isAuthorize('users.update')) rowBody.append(cellEditBody);
+        if(isAuthorize('users.destroy')) rowBody.append(cellDeleteBody);
         tableBody.append(rowBody);
     });
 
 
-    rowHeader.append(cellId, cellRol, cellNombre, cellApellido, cellCorreo, cellContrasena, cellGenero, cellCiudad, cellEstado, cellEditar, cellEliminar);
+    rowHeader.append(cellId, cellRol, cellNombre, cellApellido, cellCorreo, cellGenero, cellCiudad, cellEstado, cellEditar, cellEliminar);
+
+    if(!isAuthorize('users.update')) rowHeader.removeChild(cellEditar);
+    if(!isAuthorize('users.destroy')) rowHeader.removeChild(cellEliminar);
     tableHeader.append(rowHeader);
 
 
@@ -181,9 +186,10 @@ async function eliminar(boton) {
     let dataId = boton.dataset.userid;
     
 
-    const confirmacion = await confirmModal("¿Está seguro de eliminar el usuario?");
-    if(confirmacion){
-        const respuesta = await delet(`usuarios/soft/${dataId}`);
+    const confirmacion = await confirm("¿Está seguro de eliminar el usuario?");
+    
+    if(confirmacion.isConfirmed){
+        const respuesta = await delet(`users/${dataId}/soft/`);
         
         if(!respuesta.success){
             console.log(respuesta);
@@ -200,13 +206,15 @@ async function editarUsuario(boton) {
 
     let userId = boton.dataset.userid;
 
-    abrirModalEditUser(userId);
+    if(isAuthorize('users.update')) location.href = `#/admin/usuarios/editar/usuario_id=${userId}`;
 
 }
 
 document.addEventListener('click', async (e) => {
 
-    if (e.target.closest('#crearUsuario')) await abrirModalNewUser(usuariosController);
+    if (e.target.closest('#crearUsuario') && isAuthorize('users.store')) 
+        location.href = `#/admin/usuarios/crear`;
+
     if (e.target.closest('#editarUsuario')) await editarUsuario(e.target.closest('#editarUsuario'));
     if (e.target.closest('#eliminarUsuario')) await eliminar(e.target.closest('#eliminarUsuario'));
 
