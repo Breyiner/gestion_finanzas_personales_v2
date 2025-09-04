@@ -23,13 +23,40 @@
 
 /* ================= ESTILOS DEL FULLCALENDAR ================= */
 :root {
-    --fc-button-bg-color: #197364;
-    --fc-button-hover-bg-color: #10453c;
-    --fc-button-active-bg-color: #10453c;
-    --fc-button-border-color: #197364;
-    --fc-button-active-border-color: #10453c;
-    --fc-button-hover-border-color: #10453c;
-    --fc-today-bg-color: #19736436;
+
+  --color-principal: #197364;
+  --color-secumdario: #fff;
+  --blanco: #fff;
+  --negro: #000;
+  --rojo: #ff4545;
+  --naranja: #da6e26;
+  --azul: #007bff;
+  --azul-claro: #f0f9ff;
+  --azul-meta: #0369a1;
+  --verde: #41bf5e;
+  --color-gris-fondo: #eeeeeec5;
+  --color-principal-oscuro: #18423b;
+  --color-sombra: rgba(0, 0, 0, 0.1);
+  --color-description-section: #787878;
+  --color-cards-admin: #0f766e;
+  --color-input: #c2c2c251;
+  --color-meta: #ecfdf5;
+  --color-backdrop-modal: #8282828c;
+  --color-modal: #eeeeee;
+  --color-default-card-movimiento: #ffd500;
+  --color-text-sidebar: rgba(120, 120, 120, 0.79);
+  --color-titulo-tile: #212529;
+  --color-description-tile: #6c757d;
+
+  --fc-button-bg-color: var(--color-principal);
+  --fc-button-hover-bg-color: var(--color-principal-oscuro);
+  --fc-button-active-bg-color: var(--color-principal-oscuro);
+  --fc-button-border-color: var(--color-principal);
+  --fc-button-active-border-color: var(--color-principal-oscuro);
+  --fc-button-hover-border-color: var(--color-principal-oscuro);
+  --fc-today-bg-color: var(--color-principal);
+
+
 }
 
 
@@ -40,7 +67,8 @@
   height: 100vh;
   grid-template-areas: "logo formulario";
   position: relative;
-  background-color: #197364;
+  background-color: var(--color-principal);
+  padding: 20px;
 }
 
 .auth__content {
@@ -53,8 +81,8 @@
 
 /* ================= LAYOUT ================= */
 .layout {
-  /* background-color: #fff; */
-  background-color: #eeeeeec5;
+  /* background-color: var(--blanco); */
+  background-color: var(--color-gris-fondo);
   display: grid;
   height: 100vh;
   /* width: 100vw; */
@@ -74,6 +102,7 @@
   grid-area: sidebar;
   padding: 15px;
   padding-right: 0;
+  opacity: 1;
 }
 
 .app {
@@ -102,13 +131,28 @@
   display: none;
 }
 
+  .menu-plegable {
+    display: none;
+  }
+
+.menu-plegable__icon {
+
+  font-size: 30px;
+  color: var(--color-principal);
+  
+}
+
+.menu-plegable__checkbox {
+  display: none;
+}
+
 /* ================= ENCABEZADO DE LAS SECCIONES ================= */
 .section-header__title {
-  color: #197364;
+  color: var(--color-principal);
 }
 
 .section-header__description {
-  color: rgb(120, 120, 120);
+  color: var(--color-description-section);
   font-weight: 600;
 }
 
@@ -140,7 +184,7 @@
 }
 
 .elemento-vacio {
-  color: #197364;
+  color: var(--color-principal);
   font-size: 1.2rem;
   align-self: center;
 }
@@ -168,10 +212,10 @@
 
 .calendario {
   width: 70%;
-  background-color: #fff;
+  background-color: var(--blanco);
   padding: 20px;
   border-radius: 20px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 10px var(--color-sombra);
 }
 
 /* ================= CONTENEDOR HISTORIAL ================= */
@@ -181,13 +225,6 @@
   flex-direction: column;
   gap: 20px;
   overflow-y: scroll;
-}
-
-/* ================= FECHA ================= */
-.fecha {
-  color:rgb(120, 120, 120);
-  font-weight: bold;
-  font-size: 1.2rem;
 }
 
 
@@ -212,7 +249,7 @@
 .fc-daygrid-more-link {
   pointer-events: none !important;
   cursor: default !important;
-  color: gray; 
+  color: var(--color-description-section); 
 }
 /* ================= CONTAINER VISTA ADMIN ================= */
 .iformacion-admin {
@@ -243,7 +280,7 @@
   font-weight: bold;
   text-transform: uppercase;
   width: 100%;
-  color: #197364;
+  color: var(--color-principal);
 }
 
 
@@ -261,8 +298,8 @@
 .info-user-card {
   width: 100%;
   border-radius: 15px;
-  background-color: #fff;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--blanco);
+  box-shadow: 0 3px 10px var(--color-sombra);
   padding: 30px;
   display:flex;
   flex-direction: column;
@@ -270,7 +307,7 @@
 }
 
 .info-user-card__title {
-  color: #197364;
+  color: var(--color-principal);
   font-size: 1.7rem;
 }
 
@@ -371,12 +408,20 @@
     margin-bottom: 30px;
   }
 
+
+  .container-resumen-calendario {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
   .container-calendario {
     flex-direction: column-reverse;
+    justify-content: start;
   }
 
   .calendario {
-    height: 400px;
+    height: 450px;
     width: 100%;
   }
 
@@ -399,7 +444,89 @@
     width: 70px;
     height: 70px;
   }
+
+  .form--login {
+    padding: 30px;
+    width: 40vw;
+    gap: 15px;
+  }
+
+  .form__title {
+    font-size: 2.2rem;
+  }
+
+  .form__label {
+    font-size: 1.3rem;
+  }
+
+  .form__text {
+    font-size: 1.1rem;
+  }
+
+  .form__link {
+    font-size: 1.1rem;
+  }
+
+  .form__button {
+    width: 250px;
+    font-size: 1.3rem;
+  }
+
+  .admin-info-card__box-icon {
+    padding: 1rem;
+  }
+
+  .admin-info-card__icon {
+    font-size: 1.4rem;
+  }
+  .admin-info-card__titulo {
+    font-size: 1.3rem;
+  }
+
+  .admin-info-card__valor {
+    font-size: 2rem;
+  }
+
+  .admin-info-card__desc {
+    font-size: 1rem;
+  }
+
+  .admin-info-card {
+    padding: 1.5rem;
+  }
 }
+
+@media (max-width: 950px) {
+
+  .auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .branding {
+    flex-direction: row;
+  }
+
+  .branding__image {
+    width: 100px;
+  }
+
+  .branding__title {
+    font-size: 1.8rem;
+    width: 20%;
+  }
+
+  .form--login {
+    width: 60vw;
+  }
+
+  .form--register {
+    width: 70vw;
+  }
+}
+
 
 @media (max-width: 900px) {
   .layout {
@@ -410,10 +537,23 @@
       'content';
   }
 
+  .menu-plegable {
+    display: block;
+  }
+
   .sidebar {
     opacity: 0;
-    position:absolute;
+    position: absolute;
+    z-index: -1;
+    top: 4rem;
+    transition: 0.5s;
+    padding-right: 10px;
   }
+
+  .sidebar-nav {
+    padding-right: 30px;
+  }
+ 
 
   .app {
     overflow-y: auto;
@@ -429,8 +569,6 @@
     height: 65px;
   }
   .container-calendario {
-    overflow-y: scroll;
-    justify-content: center;
     padding-bottom: 45px;
   }
 }
@@ -505,8 +643,30 @@
 
 @media (max-width: 600px) {
 
+  .form__title {
+    font-size: 1.4rem;
+  }
+
+  .branding__image {
+    width: 70px;
+  }
+
+  .branding__title {
+    font-size: 1.3rem;
+    width: 20%;
+  }
+
+  .sidebar-items__texto {
+    font-size: 1rem;
+  }
+
+  .sidebar-items__icon {
+    font-size: 1.3rem;
+  }
+
   .container {
     padding: 10px;
+    overflow-x: scroll;
   }
 
   .branding__image--header {
@@ -615,7 +775,7 @@
 
   .form__button {
     font-size: 1rem;
-    width: 220px;
+    width: 200px;
   }
 
   .modal-body {
@@ -653,12 +813,6 @@
     height: 70px;
   }
 
-  .container-resumen-calendario {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
   .fc .fc-toolbar-title {
     font-size: 1.4rem;
   }
@@ -670,9 +824,62 @@
   .calendario {
     margin-bottom: 10px;
   }
+
+  .tabla__celda--header {
+    font-size: 1rem;
+  }
+
+  .tabla__celda {
+    font-size: 0.9rem;
+  }
+
+  .iformacion-admin {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+  }
 }
 
-@media (max-width: 550px) { 
+@media (max-height: 800px) {
+  
+  .sidebar {
+
+    height: 90%;
+    overflow-y: hidden;
+    
+
+  }
+
+  .sidebar-nav {
+    overflow-y: scroll;
+  }
+ 
+
+}
+
+@media (max-height: 650px) { 
+  
+  .auth {
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+}
+
+@media (max-width: 600px) { 
+
+  .form--register {
+    padding: 25px;
+    gap: 15px;
+  }
+
+  .form__text {
+    font-size: 0.9rem;
+  }
+
+  .form__link {
+    font-size: 0.9rem;
+  }
 
   .form__label {
     font-size: 0.8rem;
@@ -710,6 +917,26 @@
 
 @media (max-width: 470px)  {
 
+ .form--register {
+    padding: 15px;
+  }
+
+  .branding__title {
+    font-size: 1rem;
+  }
+
+  .form__link {
+    font-size: 0.7rem;
+  }
+
+  .form__text {
+    font-size: 0.7rem;
+  }
+
+  .branding__image {
+    width: 50px;
+  }
+
   .fc .fc-toolbar-title {
     font-size: 1rem;
   }
@@ -720,5 +947,17 @@
   
   .fc .fc-button {
     font-size: 0.5em;
+  }
+
+  .form--register .form__button {
+    width: 150px;
+  }
+
+  .form__button {
+    width: 150px;
+  }
+
+  .form--register .form__title {
+    margin-bottom: 0;
   }
 }

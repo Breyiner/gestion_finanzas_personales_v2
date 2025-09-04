@@ -1,22 +1,17 @@
 .tabla {
-  background-color: #fff;
+  background-color: var(--blanco);
   height: max-content;
   border-collapse: collapse;
   width: 100%;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 10px var(--color-sombra);
   /* flex-direction: column; */
 }
 
-.tabla--sinWidth {
-  /* width: 50%; */
-  /* align-self: center; */
-}
-
 .tabla__header {
-  background-color: #197364;
-  color: #eeeeee;
+  background-color: var(--color-principal);
+  color: var(--blanco);
   margin-bottom: 20px;
 }
 

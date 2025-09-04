@@ -4,27 +4,27 @@
   right: 2rem;
   width: 80px;
   height: 80px;
-  background: #197364;
+  background: var(--color-principal);
   border: none;
   border-radius: 16px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 20px var(--color-sombra);
   transition: all 0.2s ease;
   z-index: 1000;
 }
 
 .nuevo__icono {
   font-size: 28px;
-  color: white;
+  color: var(--blanco);
   transition: transform 0.2s ease;
 }
 
 .nuevo:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 6px 25px var(--color-principal-oscuro);
 }
 
 .nuevo:hover .nuevo__icono {

@@ -3,11 +3,11 @@
   display: flex;
   flex-direction: column;
   width: 30vw;
-  background-color: #fff;
+  background-color: var(--blanco);
   padding: 40px;
   border-radius: 30px;
   gap: 40px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px var(--color-sombra);
 }
 
 .form--register {
@@ -15,7 +15,7 @@
 }
 
 .form__title {
-  color: #197364;
+  color: var(--color-principal);
   text-align: center;
   font-size: 3rem;
 }
@@ -41,8 +41,8 @@
 }
 
 .form__label {
-  color: #197364;
-    overflow: hidden;
+  color: var(--color-principal);
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-weight: 500;
@@ -50,8 +50,8 @@
 }
 
 .form__input {
-  background-color: #c2c2c251;
-  border: 2px solid #fff;
+  background-color: var(--color-input);
+  border: 2px solid var(--blanco);
   border-radius: 10px;
   font-size: 1.2rem;
   padding: 12px;
@@ -60,7 +60,7 @@
 }
 
 .form__input:focus {
-  border: 2px solid #197364;
+  border: 2px solid var(--color-principal);
   transition: 0.2s linear;
 }
 
@@ -69,20 +69,16 @@
   height: 52px;
 }
 
-.form__input--color::-webkit-color-swatch {
-  /* margin: 12px; */
-}
-
 /* ========== FORM BUTTON ========== */
 .form__button {
   border: none;
-  background-color: #197364;
+  background-color: var(--color-principal);
   width: 300px;
   padding: 10px 0;
   margin-top: 10px;
   border-radius: 10px;
   font-size: 1.5rem;
-  color: #fff;
+  color: var(--blanco);
   text-align: center;
   align-self: center;
   font-weight: 600;
@@ -91,7 +87,7 @@
 }
 
 .form__button:hover {
-  background-color: #21a58f;
+  background-color: var(--color-principal-oscuro);
 }
 
 .form--register .form__button {
@@ -104,16 +100,16 @@
   gap: 10px;
   font-size: 1.3rem;
   justify-content: center;
-  color: #197364;
+  color: var(--color-principal);
 }
 
 .form__link {
-  color: #21a58f;
+  color: var(--color-principal-oscuro);
 }
 
 .error::after {
   content: var(--error-message);
-  color: red;
+  color: var(--rojo);
   position: absolute;
   bottom: -22px;
   right: 0;
@@ -143,9 +139,9 @@
 /* ========== MODALES ========== */
 .form--modal {
   padding: 20px;
-  background-color: #fff;
+  background-color: var(--blanco);
   border-radius: 15px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 10px var(--color-sombra);
   width: 100%;
   gap: 25px;
 }
@@ -180,6 +176,6 @@
     top: 50%;
     transform: translateY(-50%);
     border-radius: 4px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-description-section);
 }
 

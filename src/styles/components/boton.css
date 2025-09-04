@@ -7,26 +7,26 @@
   border-radius: 5px;
   padding: 3px 12px;
   cursor: pointer;
-  color: #fff;
-  background-color: #c2c2c2;
+  color: var(--blanco);
+  background-color: var(--color-gris-fondo);
   vertical-align: middle;
   font-family: "Montserrat", sans-serif;
 }
 
 .boton--rojo {
-  background-color: rgb(255, 69, 69);
+  background-color: var(--rojo);
 }
 
 .boton--azul {
-  background-color: #007bff;
+  background-color: var(--azul);
 }
 
 .boton--verde {
-  background-color: #41bf5e;
+  background-color: var(--verde);
 }
 
 .boton--colorPrincipal {
-  background-color: #197364;
+  background-color: var(--color-principal);
   height: 45px;
 }
 
@@ -43,11 +43,11 @@
 } 
 
 .boton-txt-mainColor {
-  color: #197364;
+  color: var(--color-principal);
 }
 
 .boton--borde-mainColor {
-  border: 2px dashed #197364;
+  border: 2px dashed var(--color-principal);
   border-radius: 10px;
 }
 

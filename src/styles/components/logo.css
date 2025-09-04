@@ -15,10 +15,10 @@
 
 .branding__title {
   text-transform: uppercase;
-  font-size: 4.3rem;
+  font-size: 4.3vw;
   letter-spacing: -1px;
   font-weight: bold;
-  color: #fff;
+  color: var(--blanco);
 }
 
 .branding--header {
@@ -36,7 +36,7 @@
 .branding__title--header {
   font-size: 1.2rem;
   margin-top: 5px;
-  color: #197364;
+  color: var(--color-principal);
   display: block;
   width: 0;
   line-height: 25px;

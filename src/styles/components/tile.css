@@ -1,20 +1,20 @@
 /* Componente base */
 .tile {
-  background: white;
+  background: var(--blanco);
   border-radius: 12px;
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border: 2px solid #e9ecef;
+  box-shadow: 0 2px 8px var(--color-sombra);
+  border: 2px solid var(--color-meta);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
 .tile:hover {
   transform: translateY(-4px);
-  border-color: #197364;
+  border-color: var(--color-principal);
   z-index: 1001;
 }
 
@@ -32,44 +32,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #eeeeeec5;
+  background-color: var(--color-gris-fondo);
 }
 
 .tile__icon {
   font-size: 25px;
-}
-
-/* Colores específicos por tipo */
-.tile__icon-box--ingresos {
-  background-color: #e8f5e8;
-}
-
-.tile__icon-box--gastos {
-  background-color: #ffeaea;
-}
-
-.tile__icon-box--metas {
-  background-color: #fff8e1;
-}
-
-.tile__icon-box--inversiones {
-  background-color: #e1f5fe;
-}
-
-.tile__icon--ingresos {
-  color: #28a745;
-}
-
-.tile__icon--gastos {
-  color: #dc3545;
-}
-
-.tile__icon--metas {
-  color: #ffc107;
-}
-
-.tile__icon--inversiones {
-  color: #197364;
 }
 
 .tile__content {
@@ -85,33 +52,16 @@
   overflow: hidden;
   font-weight: 600;
   text-overflow: ellipsis;
-  color: #212529;
+  color: var(--color-titulo-tile);
 }
 
 .tile__description {
   font-size: 1rem;
-  color: #6c757d;
+  color: var(--color-description-tile);
   font-weight: bold;
 }
 
 .tile__monto {
   font-size: 1.3rem;
   font-weight: 700;
-}
-
-/* Colores de montos según tipo */
-.tile__monto--ingresos {
-  color: #28a745;
-}
-
-.tile__monto--gastos {
-  color: #dc3545;
-}
-
-.tile__monto--metas {
-  color: #ffc107;
-}
-
-.tile__monto--inversiones {
-  color: #197364;
 }

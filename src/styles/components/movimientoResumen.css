@@ -4,11 +4,11 @@
   justify-content: space-between;
   padding: 16px 24px;
   border-radius: 12px;
-  color: white;
+  color: var(--blanco);
   gap: 16px;
   width: 100%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #ffd500;
+  box-shadow: 0 4px 8px var(--color-sombra);
+  background-color: var(--color-default-card-movimiento);
 }
 
 .movimiento-resumen__icono {
@@ -32,17 +32,4 @@
   font-size: 1.5vw;
   font-weight: bold;
   margin: 0;
-}
-
-/* Colores personalizados por tipo */
-.movimiento-resumen--ingresos {
-  background: #28a745;
-}
-
-.movimiento-resumen--gastos {
-  background: #dc3545;
-}
-
-.movimiento-resumen--metas {
-  background: #ffc107;
 }

@@ -6,9 +6,9 @@
     padding: 25px;
     cursor: pointer;
     gap: 25px;
-    background-color: #fff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: var(--blanco);
+    box-shadow: 0 4px 20px var(--color-sombra);
+    border: 1px solid var(--color-sombra);
 }
 
 .meta:hover {
@@ -18,13 +18,13 @@
 
 /* Nombre de la meta */
 .meta__title {
-    background: linear-gradient(135deg, #f0fdfa, #ecfdf5);
-    color: #065f46;
+    background: var(--color-meta);
+    color: var(--color-principal);
     padding: 15px 20px;
     border-radius: 12px;
     font-weight: 700;
     font-size: 1.3rem;
-    border: 1px solid #a7f3d0;
+    border: 1px solid var(--verde);
     margin-bottom: 10px;
     text-align: center;
 }
@@ -35,7 +35,7 @@
     display: flex;
     flex-direction: column;
     gap: 25px;
-    color: #5e5e5e;
+    color: var(--color-description-section);
     font-weight: 500;
 }
 
@@ -49,8 +49,8 @@
 
 .meta__row--flexible {
     justify-content: center;
-    background: #f0f9ff;
-    color: #0369a1;
+    background: var(--azul-claro);
+    color: var(--azul-meta);
     border-radius: 8px;
     padding: 10px;
     font-weight: 600;
@@ -58,7 +58,7 @@
 
 .meta__text {
     font-weight: 500;
-    color: #64748b;
+    color: var(--color-description-section);
 
     font-size: 1.1rem;
 }
@@ -68,7 +68,7 @@
 }
 
 .meta__monto {
-    color: #1e293b;
+    color: var(--azul-meta);
     font-weight: bold;
     font-size: 1.3rem;
 }
@@ -79,7 +79,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    border-top: 2px solid #21a58f;
+    border-top: 2px solid var(--color-principal);
     padding-top: 20px;
 }
 
@@ -91,13 +91,13 @@
 }
 
 .meta__ahorrado {
-    color: #21a58f;
+    color: var(--color-principal);
     font-weight: bold;
     font-size: 1.3rem;
 }
 
 .meta__porcentaje {
-    color: #64748b;
+    color: var(--color-description-section);
     font-size: 1rem;
     font-weight: 600;
 }
@@ -113,24 +113,24 @@
 }
 
 .meta__progreso::-webkit-progress-bar {
-    background: #e2e8f0;
+    background: var(--color-gris-fondo);
     border-radius: 6px;
 }
 
 .meta__progreso::-webkit-progress-value {
-    background: linear-gradient(90deg, #21a58f, #059669);
+    background: var(--color-principal);
     border-radius: 6px;
 }
 
 /* Sugerencia */
 .meta__sugerencia {
-    background: #f0fdfa;
-    color: #065f46;
+    background: var(--color-meta);
+    color: var(--color-principal);
     padding: 10px 15px;
     border-radius: 8px;
     font-size: 0.9rem;
     text-align: center;
-    border: 1px solid #a7f3d0;
+    border: 1px solid var(--verde);
     font-weight: 500;
     margin-top: 15px;
 }

@@ -1,12 +1,9 @@
 .admin-info-card {
-    background: linear-gradient(135deg, #068960, #047857c8);
-    background: linear-gradient(135deg, #10b981, #059669);
-    background: linear-gradient(135deg, #10b98150, #05966891);
+    background: #05966891;
     border-radius: 16px;
     padding: 2rem 1.5rem;
-    color: white;
-    color: #0f766e;
-    box-shadow: 0 8px 25px -8px rgba(5, 150, 105, 0.4);
+    color: var(--blanco);
+    color: var(--color-cards-admin);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -19,7 +16,6 @@
 /* Hover effect */
 .admin-info-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 35px -8px rgba(5, 150, 105, 0.5);
 }
 
 
@@ -30,7 +26,7 @@
 
 /* Contenedor del ícono */
 .admin-info-card__box-icon {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--color-sombra);
     border-radius: 16px;
     padding: 1.25rem;
     display: inline-flex;
@@ -43,7 +39,7 @@
 /* Ícono */
 .admin-info-card__icon {
     font-size: 2.5rem;
-    color: white;
+    color: var(--blanco);
 }
 
 /* Título */
@@ -72,18 +68,18 @@
 
 /* Contenedor del ícono - Fondo más oscuro para contrastar */
 .admin-info-card__box-icon {
-    background: #197364;
+    background: var(--color-principal);
     border-radius: 14px;
     padding: 1.25rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
-    box-shadow: 0 4px 12px rgba(25, 115, 100, 0.3);
+    box-shadow: 0 4px 12px var(--color-sombra);
 }
 
 /* Ícono - Blanco para contrastar con el fondo oscuro */
 .admin-info-card__icon {
     font-size: 2rem;
-    color: white;
+    color: var(--blanco);
 }

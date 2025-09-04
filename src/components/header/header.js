@@ -43,8 +43,45 @@ async function logout() {
 
 }
 
+const menuPlegable = () => {
+
+  
+  let checkbox = document.querySelector(".menu-plegable__checkbox");
+  
+  let sidebar = document.querySelector('.sidebar');
+  
+  if (screen.width > 900) sidebar.style.opacity = 1;
+
+  if (checkbox.checked) {
+    sidebar.style.opacity = 1;
+    sidebar.style.zIndex = "99";
+  }
+  
+  else {
+    sidebar.style.opacity = 0;
+    sidebar.style.zIndex = "-1";
+  }
+
+}
+
 document.addEventListener('click', async (e) => {
 
-    if(e.target.closest('#logoutUser')) await logout();
+  if (e.target.closest('#logoutUser')) await logout();
+  if (e.target.closest('.menu-plegable')) menuPlegable();
+
+})
+
+window.addEventListener('resize', () => {
+
+  let sidebar = document.querySelector('.sidebar');
+  
+  if (screen.width > 900) {
+    sidebar.style.opacity = 1;
+    sidebar.style.zIndex = "99";
+  }
+  else {
+    sidebar.style.opacity = 0;
+    sidebar.style.zIndex = "-1";
+  }
 
 })
