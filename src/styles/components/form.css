@@ -36,11 +36,15 @@
   gap: 5px;
   width: 100%;
   font-size: 1.5rem;
+    overflow: hidden; 
   position: relative;
 }
 
 .form__label {
   color: #197364;
+    overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-weight: 500;
   text-align: left;
 }
@@ -178,3 +182,4 @@
     border-radius: 4px;
     border: 1px solid #ccc;
 }
+

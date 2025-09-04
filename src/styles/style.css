@@ -94,7 +94,7 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
-  height: 100vh;
+  height: 100%;
   position: relative;
 }
 
@@ -149,12 +149,13 @@
 /* ================= CONTENEDOR METAS ================= */
 .metas-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 500px));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
   gap: 55px;
   padding-top: 5px;
   padding-bottom: 15px;
   overflow-y: scroll;
   height: max-content;
+  justify-content: center;
 }
 
 
@@ -370,6 +371,29 @@
     margin-bottom: 30px;
   }
 
+  .container-calendario {
+    flex-direction: column-reverse;
+  }
+
+  .calendario {
+    height: 400px;
+    width: 100%;
+  }
+
+  .informacion-calendario {
+    flex-direction: column-reverse;
+    padding-bottom: 10px;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .container-resumen-calendario {
+    flex-direction: row;
+    height: max-content;
+    gap: 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
   
   .nuevo {
     width: 70px;
@@ -404,6 +428,11 @@
     width: 65px;
     height: 65px;
   }
+  .container-calendario {
+    overflow-y: scroll;
+    justify-content: center;
+    padding-bottom: 45px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -411,25 +440,285 @@
     display:none;
   }
 
-  .container-resumen {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .profile-menu {
+    width: 300px;
   }
 
-  .container.container--inicio {
-    /* overflow:scroll; */
-  }
-
-  .movimiento-resumen__icono {
-    font-size: 2rem;
-  }
-
-  .movimiento-resumen__titulo {
+  .profile-menu__username {
     font-size: 1.1rem;
   }
 
+  .profile-menu__icon-container {
+    min-width: 35px;
+    height: 35px;
+  }
+
+  .profile-menu__icon {
+    font-size: 1.1rem;
+  }
+
+  .profile-menu__text {
+    font-size: 1.1rem;
+  }
+
+  .profile-menu__arrow {
+    font-size: 1.5rem;
+  }
+
+  .container-resumen {
+    margin-bottom: 0;
+  }
+
+  .movimiento-resumen__icono {
+    font-size: 1.8rem;
+  }
+
+  .movimiento-resumen__titulo {
+    font-size: 1rem;
+  }
+
   .movimiento-resumen__monto {
+    font-size: 1.3rem;
+  }
+
+  .tile {
+    padding: 15px;
+  }
+
+  .tile__icon-box{ 
+    width: 48px;
+    height: 48px;
+  }
+
+  .tile__title {
+    font-size: 1.1rem;
+  }
+
+  .tile__description  {
+    font-size: 0.9rem;
+  }
+
+  .tile__monto {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .container {
+    padding: 10px;
+  }
+
+  .branding__image--header {
+    width: 35px;
+    height: 35px;
+  }
+
+  .branding__title--header {
+    font-size: 1rem;
+    line-height: 20px;
+  }
+
+  .profile__avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .section-header__title {
+    font-size: 20px;
+  }
+
+  .section-header__description {
+    font-size: 14px;
+  }
+
+  .movimiento-resumen {
+    padding: 10px;
+  }
+
+  .movimiento-resumen__icono {
+    font-size: 1.3rem;
+  }
+
+  .movimiento-resumen__titulo {
+    font-size: 0.9rem;
+  }
+
+  .movimiento-resumen__monto {
+    font-size: 1rem;
+  }
+
+  .tile {
+    padding: 12px;
+  }
+
+  .tile__info {
+    width: 50%;
+  }
+
+  .tile__icon-box{ 
+    width: 45px;
+    height: 40px;
+  }
+
+  .tile__icon {
+    font-size: 20px;
+  }
+
+  .tile__title {
+    font-size: 1rem;
+  }
+
+  .tile__description  {
+    font-size: 0.7rem;
+  }
+
+  .tile__monto {
+    font-size: 1rem;
+  }
+
+  .switch-filtro__name {
+    font-size: 11px;
+    padding: 5px 13px;
+  }
+
+  .modal-header {
+    height: 60px;
+  }
+
+  .modal-header__title {
+    font-size: 20px;
+  }
+
+  .nuevo {
+    width: 50px;
+    height: 50px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .info-user-card__title  {
+    font-size: 1.3rem;
+  }
+
+  .info-user-card__text {
+    font-size: 0.8rem;
+  }
+
+  .form--profile .form__label {
+    font-size: 1rem;
+  }
+
+  .form__row {
+    flex-direction: column;
+  }
+
+  .form__button {
+    font-size: 1rem;
+    width: 220px;
+  }
+
+  .modal-body {
+    overflow-y: scroll;
+    max-height: 550px;
+  }
+
+  .meta__title {
+    font-size: 1.1rem;
+    padding: 10px 15px;
+  }
+
+  .meta__monto{
+    font-size: 1.1rem;
+  }
+
+  .meta__text {
+    font-size: 1rem;
+  }
+
+  .meta__row--flexible {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .meta__ahorrado {
+    font-size: 1.1rem;
+  }
+
+  .metas-container {
+    gap: 30px;
+  }
+
+  .boton--grande {
+    height: 70px;
+  }
+
+  .container-resumen-calendario {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .fc .fc-toolbar-title {
     font-size: 1.4rem;
+  }
+  
+  .fc .fc-button {
+    font-size: 0.8em;
+  }
+
+  .calendario {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 550px) { 
+
+  .form__label {
+    font-size: 0.8rem;
+  }
+
+  .form__input {
+    padding: 6px;
+    font-size: 0.8rem;
+  }
+
+  .form__field {
+    overflow: hidden; 
+  }
+
+  .error::after {
+    font-size: 0.6rem;
+  }
+
+  .boton {
+    font-size: 0.9rem;
+    padding: 2px 8px;
+    min-width: 90px;
+    min-height: 30px;
+  }
+
+  .cant-aportes {
+    height: 20px;
+    line-height: 20px;
+  }
+
+  .fc table {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 470px)  {
+
+  .fc .fc-toolbar-title {
+    font-size: 1rem;
+  }
+
+  .informacion-calendario {
+    padding: 0;
+  }
+  
+  .fc .fc-button {
+    font-size: 0.5em;
   }
 }
